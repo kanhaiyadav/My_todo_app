@@ -50,7 +50,7 @@ main>p{
     border-radius: 10px;
     border-bottom: 2px solid rgb(79, 79, 79);
 }
-main>form{
+#add-task{
     text-align: center;
 }
 #description{
@@ -180,6 +180,12 @@ p>span{
     background-color: rgb(209, 209, 209);
     padding: 10px;
     align-self: center;
-    right: 10px;
+    right: 20px;
     border-radius: 20px;
+}
+
+.tick{
+    position: absolute;
+    right: 10px;
+    display: none;
 }
