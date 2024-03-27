@@ -50,6 +50,9 @@ main>p{
     border-radius: 10px;
     border-bottom: 2px solid rgb(79, 79, 79);
 }
+main>form{
+    text-align: center;
+}
 #description{
     position: relative;
     padding: 20px;
@@ -83,18 +86,20 @@ main>p{
     list-style: none;
     position: absolute;
     bottom: 0%;
-    background-color: rgba(168, 168, 168, 0.736);
+    background-color: rgb(165, 165, 165);
     font-size: 1.5rem;
     right: 10px;
     border-radius: 10px;
     height: 0px;
     padding: 0px;
     overflow: hidden;
+    z-index: 99;
     transition: all 0.3s ease-in-out;
 }
 .active{
     height: 250px;
     bottom: -370%;
+    box-shadow: 0px 0px 20px 10px rgba(123, 123, 123, 0.782);
 }
 
 .list>li{
@@ -115,4 +120,66 @@ main>p{
     right:10px;
     width: 45px;
     transition: all 0.3s ease-in-out;
+}
+.btn{
+    font-size: 1.5rem;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    background: linear-gradient(white, rgba(125, 125, 125, 0.79));
+    outline: none;
+    border: none;
+}
+
+.btn:hover{
+    background-color: gray;
+    border: 1px solid black;
+}
+
+.btn span{
+    padding:10px;
+}
+
+p>span{
+    margin: 0px 20px;
+}
+#task-container{
+    flex-direction: column;
+    max-height: 36%;
+    width: 100%;
+    overflow: scroll;
+    /* background-color: red; */
+}
+
+#task-container::-webkit-scrollbar{
+    display: none;
+}
+
+.task{
+    position: relative;
+    width: 93.5%;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    margin: 15px 0px;
+    background-color: rgba(168, 168, 168, 0.736);
+    padding:10px 30px;
+}
+.task i{
+    color: rgb(90, 90, 90);
+}
+.task-description{
+    margin: 0px;
+}
+.date{
+    font-size: 1.2rem;
+    color: rgb(90, 90, 90);
+}
+.label{
+    position: absolute;
+    background-color: rgb(209, 209, 209);
+    padding: 10px;
+    align-self: center;
+    right: 10px;
+    border-radius: 20px;
 }

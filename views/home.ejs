@@ -4,24 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Todo App</title>
+    <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
     <main>
         <p>Try adding a task:</p>
-        <form id="description" action="">
-            <textarea class="input" name="" id="" cols="30" rows="5" placeholder="Description...."></textarea>
-            <input id="inp1" class="input" type="text" value="Choose a category..." disabled>
-            <img id="arrow" src="./images/down.png" alt="">
-            <ul class="list">
-                <li>School or College</li>
-                <li>Work</li>
-                <li>Friend</li>
-                <li>Cleaning</li>
-                <li>Other</li>
-            </ul>
-            <input id="inp2" class="input" type="date">
+        <form action="">
+            <div id="description">
+
+                <textarea class="input" name="" id="" cols="30" rows="5" placeholder="Description...."></textarea>
+                <input id="inp1" class="input" type="text" value="Choose a category..." disabled>
+                <img id="arrow" src="./images/down.png" alt="">
+                <ul class="list">
+                    <li>School or College</li>
+                    <li>Work</li>
+                    <li>Friend</li>
+                    <li>Cleaning</li>
+                    <li>Other</li>
+                </ul>
+                <input id="inp2" class="input" type="date">
+            </div>
+            <button type="submit" class="btn"><i class="fa-solid fa-plus"></i><span>Add Task</span></button>
+            <button class="btn"><i class="fa-solid fa-trash-can"></i><span>Delete Task</span></button>
         </form>
+
+        <p><i class="fa-regular fa-hourglass-half"></i><span>Pending Tasks:</span> </p>
+        <div id="task-container">
+            <div class="task">
+                <p><span class="task-description">For more details, you can explore the Stack Overflow thread</span><span ="label">Something</span></p>
+                <p><i class="fa-solid fa-calendar-days"></i><span class="date">16-09-2028</span></p>
+            </div>
+            <div class="task">
+                <p><span class="task-description">For more details, you can explore the Stack Overflow thread</span><span ="label">Something</span></p>
+                <p><i class="fa-solid fa-calendar-days"></i><span class="date">16-09-2028</span></p>
+            </div>
+            <div class="task">
+                <p><span class="task-description">For more details, you can explore the Stack Overflow thread</span><span ="label">Something</span></p>
+                <p><i class="fa-solid fa-calendar-days"></i><span class="date">16-09-2028</span></p>
+            </div>
+            <div class="task">
+                <p><span class="task-description">For more details, you can explore the Stack Overflow thread</span><span ="label">Something</span></p>
+                <p><i class="fa-solid fa-calendar-days"></i><span class="date">16-09-2028</span></p>
+            </div>
+            <div class="task">
+                <p><span class="task-description">For more details, you can explore the Stack Overflow thread</span><span ="label">Something</span></p>
+                <p><i class="fa-solid fa-calendar-days"></i><span class="date">16-09-2028</span></p>
+            </div>
+        </div>
     </main>
     <script type="text/javascript" src="./js/home.js"></script>
 </body>
