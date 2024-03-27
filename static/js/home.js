@@ -13,6 +13,8 @@ for(let i = 0; i < li.length; i++)
     li[i].addEventListener("click", ()=>{
         input.value = li[i].innerText;
         ul.classList.toggle('active');
+        deg = (deg+180)%360;
+        arrow.style.transform = `rotateZ(${deg}deg)`;
 
     } )
 }
