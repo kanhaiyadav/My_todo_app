@@ -5,6 +5,7 @@ let input = document.querySelector("#inp1");
 let tick = document.querySelectorAll(".tick");
 let task = document.querySelectorAll(".task");
 let deg = 0;
+let main = '#EE7214'
 
 function showOrHideDropdown(){
     deg = (deg+180)%360;
@@ -42,7 +43,7 @@ for(let i = 0; i < task.length; i++)
     tick[i].addEventListener('click', ()=>{
         if(tick[i].checked)
         {
-            task[i].style.border = '2px solid #00bfff';
+            task[i].style.border = '2px solid '+ main;
         }
         else{
             task[i].style.border = 'none';
