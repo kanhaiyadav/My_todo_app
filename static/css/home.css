@@ -19,6 +19,29 @@ body{
     font-family: sans-serif;
 }
 
+/*Sign in and sign up*/
+
+.sign{
+    position: absolute;
+    left: 20px;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #EE7214;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#signin{
+    top:20px
+}
+
+#signup{
+    top: 100px;
+}
+
+
+/*rest body*/
 main{
     position: relative;
     width: 67%;
@@ -90,7 +113,7 @@ main>p{
     list-style: none;
     position: absolute;
     bottom: 0%;
-    background-color: rgb(165, 165, 165);
+    background-color: #d6d398;
     font-size: 1.5rem;
     right: 10px;
     border-radius: 10px;
@@ -103,7 +126,6 @@ main>p{
 .active{
     height: 250px;
     bottom: -370%;
-    box-shadow: 0px 0px 20px 10px rgba(123, 123, 123, 0.782);
 }
 
 .list>li{
@@ -113,7 +135,8 @@ main>p{
 }
 
 .list>li:hover{
-    background-color: rgba(125, 125, 125, 0.79);
+    background-color: var(--main);
+    color: ghostwhite;
 }
 
 #arrow{
