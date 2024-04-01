@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
-    <link rel="stylesheet" href="../css/userSignin.css">
+    <link rel="stylesheet" href="../css/user-signin.css">
 </head>
 <body>
     <main>
         <form id="signin-form" action="/user/authorize" method="post">
-            <label for="name">Enter you user name:</label>
-            <input class="inp" id="user-name" type="text" name="email">
-            <label for="password">Enter the password:</label>
-            <input class="inp" id="password" type="password" name="password">
-            <button form="signin-form" class="btn" type="submit">sign in</button>
-            <a href="/"><button class="btn" type="button">back</button></a>
+            <div class="container">
+                <label for="name">Enter you user name:</label>
+                <input id="user-name" type="text" name="email">
+            </div>
+            <div class="container">
+                <label for="password">Enter the password:</label>
+                <input id="password" type="password" name="password">
+            </div>
+            <button form="signin-form" type="submit">sign in</button>
+            <a href="/"><button type="button">back</button></a>
         </form>
     </main>
-    <script type="text/javascript" src="./js/user-signin.js"></script>
+    <script type="text/javascript" src="../js/user-signin.js"></script>
 </body>
 </html>
