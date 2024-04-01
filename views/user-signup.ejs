@@ -9,15 +9,26 @@
 <body>
     <main>
         <form id="signup-form" action="/user/create_user" method="post">
-            <label class="label" for="email">Enter you username:</label>
-            <input class="inp" id="user-name" type="text" name="email">
-            <label class="label" for="password">password</label>
-            <input class="inp" id="password" type="text" name="password">
-            <label class="label" for="name">Enter you name:</label>
-            <input class="inp" id="name" type="text" name="name">
-            <button form="signup-form" class="btn" type="submit">sign up</button>
+
+            <div class="container">
+                <input class="inp" id="user-name" type="text" name="email">
+                <label class="label" for="user-name">Enter you username</label>
+            </div>
+
+            <div class="container">
+                <input class="inp" id="password" type="password" name="password">
+                <label class="label" for="password">Enter the password</label>
+            </div>
+
+            <div class="container">
+                <input class="inp" id="name" type="text" name="name">
+                <label class="label" for="name">Enter your name</label>
+            </div>
+
             <a href="/"><button class="btn" type="button">back</button></a>
+            <button form="signup-form" class="btn" type="submit">sign up</button>
         </form>
+        <script type="text/javascript" src="../js/user-signup.js"></script>
     </main>
 </body>
 </html>

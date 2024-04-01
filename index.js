@@ -7,9 +7,18 @@ const passport = require('passport');
 const passportLocal = require('./config/passport.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const sassMiddleware = require('node-sass-middleware');
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+}))
 app.use(session({
     name:'todo',
     secret:'somethingrandom',
@@ -28,7 +37,7 @@ app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
 app.use(cookieParser());
-app.use(express.static('./static'));
+app.use(express.static('./assets'));
 app.use(express.urlencoded({extended: true}))
 app.use('/', require('./routes/index.js'));
 
