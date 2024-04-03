@@ -21,7 +21,6 @@ module.exports.profile = (req, res)=>{
 module.exports.create = async function(req, res){
     try{
         let user = await User.findOne({email: req.body.email})
-        console.log(req.body.email, user);
         if (!user){
             try{
                 User.create(req.body);
