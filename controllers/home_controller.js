@@ -1,5 +1,8 @@
 const Task = require('../model/task_model.js');
 
+module.exports.unknown = (req, res) => {
+    return res.render('unknown');
+}
 module.exports.home = async (req, res)=>{
     try
     {

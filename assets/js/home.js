@@ -1,7 +1,7 @@
 let arrow = document.querySelector("#arrow");
 let ul = document.querySelector(".list");
 let li = document.querySelectorAll(".list li");
-let input = document.querySelector("#inp1");
+let input = document.querySelector('input[type="text"]');
 let tick = document.querySelectorAll(".tick");
 let task = document.querySelectorAll(".task");
 let deg = 0;
@@ -20,8 +20,8 @@ for(let i = 0; i < li.length; i++)
     li[i].addEventListener("click", ()=>{
         if(li[i].innerText == 'Other')
         {
-            console.log("hello");
-            input.placeholder = 'Enter other category..'
+            input.value = "";
+            input.placeholder = 'Enter other category..';
             input.focus();
         }
         else

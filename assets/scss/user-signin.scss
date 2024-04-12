@@ -72,7 +72,7 @@ body {
                 input {
                     background: transparent;
                     outline: none;
-                    padding: $base-td-padding*1.5 $base-rl-padding;
+                    padding: $base-td-padding*3 $base-rl-padding;
                     font-size: $base-font-size;
                     border: none;
                     width: 90%;
@@ -100,5 +100,10 @@ body {
                 right: 0;
             }
         }
+    }
+    a[id="signup"]{
+        position: relative;
+        color: white;
+        bottom: -50px;
     }
 }
