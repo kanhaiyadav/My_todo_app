@@ -8,15 +8,14 @@
     <link rel="stylesheet" href="./css/home.css">
 </head>
 <body>
-    <a class="sign" id="signin" href="/user/signin">Sign in</a>
-    <a class="sign" id="signup" href="/user/signup">Sign up</a>
+    <a id="signin" href="/user/signin">Sign in</a>
+    <a id="signup" href="/user/signup">Sign up</a>
     <main>
         <p>Try adding a task:</p>
         <form id="add-task" action="/new-task" method="post">
-            <div id="description">
-
-                <textarea class="input" name="description" id="" cols="30" rows="5" placeholder="Description...."></textarea>
-                <input id="inp1" class="input" type="text" name="category" placeholder="Choose a category...">
+            <div >
+                <textarea name="description" id="" cols="30" rows="5" placeholder="Description...." required></textarea>
+                <input type="text" name="category" placeholder="Choose a category..." required>
                 <img id="arrow" src="./images/down.png" alt="">
                 <ul class="list">
                     <li>School or College</li>
@@ -25,17 +24,17 @@
                     <li>Cleaning</li>
                     <li>Other</li>
                 </ul>
-                <input id="inp2" class="input" type="date" name="date">
+                <input type="date" name="date" required>
             </div>
-            <button type="submit" form="add-task" class="btn"><i class="fa-solid fa-plus"></i><span>Add Task</span></button>
-            <button type="submit" form="task-container" class="btn"><i class="fa-solid fa-trash-can"></i><span>Delete Task</span></button>
+            <button type="submit" form="add-task"><i class="fa-solid fa-plus"></i><span>Add Task</span></button>
+            <button type="submit" form="task-container"><i class="fa-solid fa-trash-can"></i><span>Delete Task</span></button>
         </form>
 
         <p><i class="fa-regular fa-hourglass-half"></i><span>Pending Tasks:</span> </p>
         <form id="task-container" action="/del-tasks" method="post">
             <% for(let i of tasks) {%>
                 <div class="task">
-                    <input type="checkbox" class="tick" name=<%=i._id %>  value=<%=i._id %>>
+                    <input class="tick" type="checkbox" name=<%=i._id %>  value=<%=i._id %>>
                     <p><span class="task-description"><%=i.description %></span><span class="label"><%=i.category %></span></p>
                     <p><i class="fa-solid fa-calendar-days"></i><span class="date"><%=i.date %></span></p>
                 </div>

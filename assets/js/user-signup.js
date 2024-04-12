@@ -11,6 +11,7 @@ for (let i = 0; i < input.length; i++) {
     container[i].style.backgroundColor = "#fff78a63";
     container[i].style.borderColor = "#EE7214";
     label[i].style.backgroundColor = "#EE7214";
+    label[i].style.color = "white";
     label[i].style.top = "-23%";
   });
   input[i].addEventListener("blur", () => {
@@ -18,6 +19,7 @@ for (let i = 0; i < input.length; i++) {
       label[i].style.zIndex = -1;
       label[i].style.top = "29%";
       label[i].style.background = "transparent";
+      label[i].style.color = "black";
       container[i].style.borderColor = "gray";
       container[i].style.background = "transparent";
     }

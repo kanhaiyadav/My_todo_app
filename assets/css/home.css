@@ -1,219 +1,170 @@
+* {
+  margin: 0px; }
 
-:root{
-    --main: #EE7214;
-    --alternate: #fff78a63;
-}
-*{
-    margin: 0px;
-}
-body{
-    background-image:url(../images/b5.jpg);
-    backdrop-filter: blur(3px);
-    background-size:cover;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-}
-
-/*Sign in and sign up*/
-
-.sign{
+body {
+  background-image: url(../images/b5.jpg);
+  backdrop-filter: blur(3px);
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif; }
+  body a {
     position: absolute;
     left: 20px;
     font-size: 1.3rem;
     text-decoration: none;
-    color: #EE7214;
+    color: #ee7214;
     background-color: white;
     padding: 15px;
-    border-radius: 15px;
-}
-
-#signin{
-    top:20px
-}
-
-#signup{
-    top: 100px;
-}
-
-
-/*rest body*/
-main{
+    border-radius: 15px; }
+  body a[id="signin"] {
+    top: 20px; }
+  body a[id="signup"] {
+    top: 100px; }
+  body main {
     position: relative;
     width: 67%;
     height: 87vh;
     border-radius: 20px;
-    padding:30px;
-}
-main::before {
-    background-color: rgba(200, 200, 200, 0.662);
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 20px;
-    background-image: inherit; 
-    filter: blur(1px); 
-    z-index: -1; 
-}
+    padding: 20px; }
+    body main::before {
+      background-color: rgba(200, 200, 200, 0.662);
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 20px;
+      background-image: inherit;
+      filter: blur(1px);
+      z-index: -1; }
+    body main p {
+      margin-left: 20px;
+      font-size: 1.7rem; }
+    body main form[id="add-task"] {
+      text-align: center; }
+      body main form[id="add-task"] div {
+        position: relative;
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #fff78a63;
+        display: grid;
+        grid-template-rows: 0.5fr 0.5fr;
+        grid-template-columns: 0.5fr 0.5fr;
+        row-gap: 9%;
+        column-gap: 4%;
+        width: 95%; }
+        body main form[id="add-task"] div textarea,
+        body main form[id="add-task"] div input {
+          padding: 10px;
+          font-size: 1.5rem;
+          display: block;
+          outline: none;
+          border: none;
+          background: transparent;
+          border-radius: 10px;
+          border-bottom: 2px solid #EE7214; }
+        body main form[id="add-task"] div textarea {
+          grid-row: 1/2;
+          grid-column: 1/3; }
+        body main form[id="add-task"] div input[type="text"] {
+          position: relative;
+          grid-row: 2/3;
+          grid-column: 1/2; }
+        body main form[id="add-task"] div img {
+          align-self: center;
+          grid-row: 2/3;
+          grid-column: 1/2;
+          position: absolute;
+          right: 10px;
+          width: 45px;
+          transition: all 0.3s ease-in-out; }
+        body main form[id="add-task"] div ul {
+          grid-row: 2/3;
+          grid-column: 1/2;
+          list-style: none;
+          position: absolute;
+          background-color: ghostwhite;
+          color: #EE7214;
+          font-size: 1.5rem;
+          right: 10px;
+          border-radius: 10px;
+          padding: 0px;
+          overflow: hidden;
+          z-index: 99;
+          transition: all 0.3s ease-in-out; }
+          body main form[id="add-task"] div ul li {
+            padding: 7px 10px;
+            margin: 7px 10px;
+            border-radius: 10px; }
+            body main form[id="add-task"] div ul li:hover {
+              background-color: #EE7214;
+              color: ghostwhite; }
+        body main form[id="add-task"] div input[type="date"] {
+          grid-row: 2/3;
+          grid-column: 2/3; }
+      body main form[id="add-task"] button {
+        font-size: 1.5rem;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        background: linear-gradient(white, #EE7214);
+        outline: none;
+        border: none; }
+        body main form[id="add-task"] button:hover {
+          background-color: gray;
+          border: 1px solid black; }
+        body main form[id="add-task"] button span {
+          padding: 10px; }
+    body main form[id="task-container"] {
+      flex-direction: column;
+      max-height: 41.3%;
+      width: 100%;
+      overflow: scroll; }
+      body main form[id="task-container"]::-webkit-scrollbar {
+        display: none; }
+      body main form[id="task-container"] div {
+        position: relative;
+        width: 93.5%;
+        border-radius: 15px;
+        margin: 10px 0px;
+        background-color: #fff78a63;
+        padding: 10px 30px; }
+        body main form[id="task-container"] div input {
+          position: absolute;
+          right: 10px;
+          display: none; }
+        body main form[id="task-container"] div p {
+          font-size: 1.5rem; }
+          body main form[id="task-container"] div p span[class="task-description"] {
+            margin: 0px; }
+          body main form[id="task-container"] div p span[class="label"] {
+            font-size: 1.3rem;
+            color: #EE7214;
+            position: absolute;
+            background-color: ghostwhite;
+            padding: 10px;
+            align-self: center;
+            top: 20%;
+            right: 30px;
+            border-radius: 20px; }
+          body main form[id="task-container"] div p span[class="date"] {
+            font-size: 1.2rem;
+            color: #5a5a5a;
+            padding: 0px 10px; }
+          body main form[id="task-container"] div p i {
+            color: #EE7214; }
 
-main>p{
-    margin: 10px 0px;
-    font-size: 1.7rem;
-}
-.input{
-    padding: 10px;
-    font-size: 1.5rem;
-    display: block;
-    outline:none;
-    border:none;
-    background:transparent;
-    border-radius: 10px;
-    border-bottom: 2px solid var(--main);
-}
-#add-task{
-    text-align: center;
-}
-#description{
-    position: relative;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: var(--alternate);
-    display: grid;
-    grid-template-rows: 0.5fr 0.5fr;
-    grid-template-columns: 0.5fr 0.5fr;
-    row-gap: 9%;
-    column-gap: 4%;
-    width: 95%;
-}
+.list {
+  height: 0px;
+  bottom: 0%; }
 
-#description>textarea{
-    grid-row: 1/2;
-    grid-column: 1/3;
-}
-
-#inp1{
-    position: relative;
-    grid-row:2/3;
-    grid-column: 1/2;
-}
-#inp2{
-    grid-row:2/3;
-    grid-column: 2/3;
-}
-.list{
-    grid-row:2/3;
-    grid-column: 1/2;
-    list-style: none;
-    position: absolute;
-    bottom: 0%;
-    background-color: #d6d398;
-    font-size: 1.5rem;
-    right: 10px;
-    border-radius: 10px;
-    height: 0px;
-    padding: 0px;
-    overflow: hidden;
-    z-index: 99;
-    transition: all 0.3s ease-in-out;
-}
-.active{
-    height: 250px;
-    bottom: -370%;
-}
-
-.list>li{
-    padding: 7px 10px;
-    margin: 7px 10px;
-    border-radius: 10px;
-}
-
-.list>li:hover{
-    background-color: var(--main);
-    color: ghostwhite;
-}
-
-#arrow{
-    align-self: center;
-    grid-row:2/3;
-    grid-column: 1/2;   
-    position: absolute;
-    right:10px;
-    width: 45px;
-    transition: all 0.3s ease-in-out;
-}
-.btn{
-    font-size: 1.5rem;
-    padding: 10px;
-    margin: 20px;
-    border-radius: 15px;
-    cursor: pointer;
-    background: linear-gradient(white, var(--main));
-    outline: none;
-    border: none;
-}
-
-.btn:hover{
-    background-color: gray;
-    border: 1px solid black;
-}
-
-.btn span{
-    padding:10px;
-}
-
-p>span{
-    margin: 0px 20px;
-}
-#task-container{
-    flex-direction: column;
-    max-height: 36%;
-    width: 100%;
-    overflow: scroll;
-    /* background-color: red; */
-}
-
-#task-container::-webkit-scrollbar{
-    display: none;
-}
-
-.task{
-    position: relative;
-    width: 93.5%;
-    border-radius: 15px;
-    font-size: 1.3rem;
-    margin: 15px 0px;
-    background-color: var(--alternate);
-    padding:10px 30px;
-}
-.task i{
-    color: var(--main);
-}
-.task-description{
-    margin: 0px;
-}
-.date{
-    font-size: 1.2rem;
-    color: rgb(90, 90, 90);
-}
-.label{
-    color: var(--main);
-    position: absolute;
-    background-color: ghostwhite;
-    padding: 10px;
-    align-self: center;
-    right: 20px;
-    border-radius: 20px;
-}
-
-.tick{
-    position: absolute;
-    right: 10px;
-    display: none;
-}
+.active {
+  height: 250px;
+  bottom: -370%; }
