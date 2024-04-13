@@ -8,23 +8,108 @@ body {
   background-attachment: fixed;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
   font-family: sans-serif; }
-  body a {
-    position: absolute;
-    left: 20px;
-    font-size: 1.3rem;
-    text-decoration: none;
-    color: #ee7214;
-    background-color: white;
-    padding: 15px;
-    border-radius: 15px; }
-  body a[id="signin"] {
-    top: 20px; }
-  body a[id="signup"] {
-    top: 100px; }
+  body nav {
+    position: relative;
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 87vh; }
+    body nav::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background-color: rgba(205, 205, 205, 0.6);
+      filter: blur(1px);
+      border-radius: 25px;
+      border: 2px solid white; }
+    body nav div[id="icon"] {
+      position: relative;
+      padding: 2px 10px;
+      border-radius: 15px;
+      background: white;
+      padding: 4px 10px;
+      margin-right: 30px;
+      display: flex;
+      align-items: center;
+      flex-direction: row; }
+      body nav div[id="icon"] img {
+        width: 45px; }
+      body nav div[id="icon"] span {
+        font-size: 2.5rem;
+        font-weight: 700;
+        font-style: italic;
+        color: #3b445b;
+        vertical-align: center; }
+    body nav div[id="profile"] {
+      width: 95%;
+      min-height: 200px;
+      background-color: #fff78a63;
+      margin: 20px 0px;
+      border-radius: 20px; }
+    body nav a[class="nav-link"] {
+      margin: 0px 30px;
+      font-size: 1.3rem;
+      position: relative;
+      text-decoration: none;
+      color: #EE7214; }
+      body nav a[class="nav-link"]::before {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: white;
+        transition: 0.3s ease-in-out;
+        transform: scaleX(0%); }
+      body nav a[class="nav-link"]:hover::before {
+        transform: scaleX(100%); }
+    body nav a:last-child {
+      position: absolute;
+      right: 0;
+      margin: 0px 20px;
+      background-color: #004cff;
+      border-radius: 20px;
+      z-index: 0;
+      border: 2px solid white;
+      text-decoration: none;
+      height: 50px;
+      width: 160px;
+      font-size: 1.3rem;
+      overflow: hidden;
+      text-align: center; }
+      body nav a:last-child span {
+        display: grid;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+        color: white;
+        position: relative;
+        background: transparent; }
+        body nav a:last-child span::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          background-color: #2565fa;
+          width: 0;
+          transition: 0.3s ease-in-out; }
+      body nav a:last-child:hover span::before {
+        width: 100%; }
   body main {
     position: relative;
     width: 67%;
@@ -43,9 +128,10 @@ body {
       background-image: inherit;
       filter: blur(1px);
       z-index: -1; }
-    body main p {
+    body main > p {
+      font-family: 'Poppins', sans-serif;
       margin-left: 20px;
-      font-size: 1.7rem; }
+      font-size: 1.69rem; }
     body main form[id="add-task"] {
       text-align: center; }
       body main form[id="add-task"] div {
@@ -62,7 +148,7 @@ body {
         body main form[id="add-task"] div textarea,
         body main form[id="add-task"] div input {
           padding: 10px;
-          font-size: 1.5rem;
+          font-size: 1.4989rem;
           display: block;
           outline: none;
           border: none;
@@ -91,7 +177,7 @@ body {
           position: absolute;
           background-color: ghostwhite;
           color: #EE7214;
-          font-size: 1.5rem;
+          font-size: 1.4989rem;
           right: 10px;
           border-radius: 10px;
           padding: 0px;
@@ -100,7 +186,7 @@ body {
           transition: all 0.3s ease-in-out; }
           body main form[id="add-task"] div ul li {
             padding: 7px 10px;
-            margin: 7px 10px;
+            margin: 14px 10px;
             border-radius: 10px; }
             body main form[id="add-task"] div ul li:hover {
               background-color: #EE7214;
@@ -131,17 +217,28 @@ body {
         display: none; }
       body main form[id="task-container"] div {
         position: relative;
-        width: 93.5%;
+        width: 91.5%;
         border-radius: 15px;
         margin: 10px 0px;
         background-color: #fff78a63;
-        padding: 10px 30px; }
-        body main form[id="task-container"] div input {
+        padding: 10px 40px; }
+        body main form[id="task-container"] div:hover {
+          border: 2px solid #EE7214; }
+        body main form[id="task-container"] div i[class="fa-solid fa-trash-can"] {
+          color: black;
           position: absolute;
-          right: 10px;
-          display: none; }
+          left: 10px;
+          top: 18px;
+          padding: 10px;
+          font-size: 1.3rem;
+          border-radius: 50%; }
+          body main form[id="task-container"] div i[class="fa-solid fa-trash-can"]:hover {
+            color: #EE7214;
+            background-color: white;
+            box-shadow: 0px 0px 8px 5px #f9954a; }
         body main form[id="task-container"] div p {
-          font-size: 1.5rem; }
+          font-size: 1.5rem;
+          margin-left: 20px; }
           body main form[id="task-container"] div p span[class="task-description"] {
             margin: 0px; }
           body main form[id="task-container"] div p span[class="label"] {
@@ -155,10 +252,11 @@ body {
             right: 30px;
             border-radius: 20px; }
           body main form[id="task-container"] div p span[class="date"] {
-            font-size: 1.2rem;
+            font-size: 1.04rem;
             color: #5a5a5a;
             padding: 0px 10px; }
           body main form[id="task-container"] div p i {
+            font-size: 1.3rem;
             color: #EE7214; }
 
 .list {
