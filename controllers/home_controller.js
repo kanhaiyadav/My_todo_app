@@ -8,7 +8,7 @@ module.exports.home = async (req, res) => {
     try {
         let user = await User.findById(req.user._id).populate("tasks");
         return res.render('home', {
-            user:user
+            user: user
         });
     } catch (err) {
         console.error(err);
