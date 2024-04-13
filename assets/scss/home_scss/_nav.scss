@@ -6,7 +6,7 @@
         padding: $base-padding*2;
         @include center(column);
         justify-content: flex-start;
-        min-height: 87vh;
+        height: 87vh;
         &::before {
             @include full_before();
             background-color: rgba(205, 205, 205, 0.6);
@@ -20,7 +20,7 @@
             border-radius: $base-border-radius * 1.5;
             background: white;
             padding: 4px $base-padding;
-            margin-right: 30px;
+            // margin-right: 30px;
             @include center(row);
             img {
                 width: 45px;
@@ -34,64 +34,51 @@
             }
         }
         div[id="profile"]{
+            text-align: center;
             width: 95%;
-            min-height: 200px;
             background-color: $alternate-color;
             margin:$base-margin 0px;
             border-radius: $base-border-radius*2;
-        }
-        a[class="nav-link"] {
-            margin: 0px 30px;
-            font-size: $base-font-size;
-            position: relative;
-            text-decoration: none;
-            color: $base-style-color;
-            &::before {
-                content: "";
-                position: absolute;
-                bottom: -5px;
-                left: 0;
-                right: 0;
-                height: 3px;
+            padding: $base-padding;
+            img{
+                padding: $base-padding;
+                border-radius: 50%;
                 background-color: white;
-                transition: 0.3s ease-in-out;
-                transform: scaleX(0%);
             }
-            &:hover::before {
-                transform: scaleX(100%);
-            }
-        }
-        a:last-child {
-            position: absolute;
-            right: 0;
-            margin: 0px $base-margin;
-            background-color: rgb(0, 76, 255);
-            border-radius: $base-border-radius * 2;
-            z-index: 0;
-            border: 2px solid white;
-            text-decoration: none;
-            height: 50px;
-            width: 160px;
-            font-size: $base-font-size;
-            overflow: hidden;
-            text-align: center;
-            span {
-                display: grid;
-                align-content: center;
-                width: 100%;
-                height: 100%;
-                color: white;
-                position: relative;
-                background: transparent;
-                &::before {
-                    @include full_before();
-                    background-color: rgb(37, 101, 250);
-                    width: 0;
-                    transition: 0.3s ease-in-out;
+            p{
+                margin: $base-margin*0.3 0px;
+                color: $base-style-color;
+                span{
+                    display: block;
+                    font-style: italic;
+                    margin:$base-margin*0.2 0px;
+                    cursor: default;
+                    &:hover{
+                        color:white;
+                        text-decoration: underline;
+                    }
                 }
             }
-            &:hover span::before {
-                width: 100%;
+            i{
+                font-size: $base-font-size;
+                padding: $base-padding*1.2;
+                margin: $base-margin $base-margin*0.5;
+                border-radius: 50%;
+                background:radial-gradient(white 40%,$base-style-color);
+                transition: $base-transition;
+            }
+            >i:hover{
+                    transform: rotate(60deg);
             }
         }
-    }
+        div[id="social-links"] {
+            >i{
+                font-size: $base-font-size;
+                padding: $base-padding*1.2;
+                margin: $base-margin $base-margin*0.3;
+                border-radius: 50%;
+                background-color: white;
+                color:$base-style-color;
+            }
+        }
+    }    

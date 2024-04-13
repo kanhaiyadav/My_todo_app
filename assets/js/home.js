@@ -3,7 +3,9 @@ let ul = document.querySelector(".list");
 let li = document.querySelectorAll(".list li");
 let input = document.querySelector('input[type="text"]');
 // let tick = document.querySelectorAll(".tick");
+let todo_button = document.getElementById("icon");
 let task = document.querySelectorAll(".task");
+let nav = document.querySelector("body>nav");
 let deg = 0;
 let main = '#EE7214'
 
@@ -31,3 +33,8 @@ for(let i = 0; i < li.length; i++)
         showOrHideDropdown();
     } )
 }
+
+todo_button.addEventListener("click", (event)=>{
+    event.preventDefault();
+    nav.classList.toggle('initial');
+})

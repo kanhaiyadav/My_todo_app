@@ -20,7 +20,7 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: 87vh; }
+    height: 87vh; }
     body nav::before {
       content: "";
       position: absolute;
@@ -39,7 +39,6 @@ body {
       border-radius: 15px;
       background: white;
       padding: 4px 10px;
-      margin-right: 30px;
       display: flex;
       align-items: center;
       flex-direction: row; }
@@ -52,64 +51,43 @@ body {
         color: #3b445b;
         vertical-align: center; }
     body nav div[id="profile"] {
+      text-align: center;
       width: 95%;
-      min-height: 200px;
       background-color: #fff78a63;
       margin: 20px 0px;
-      border-radius: 20px; }
-    body nav a[class="nav-link"] {
-      margin: 0px 30px;
-      font-size: 1.3rem;
-      position: relative;
-      text-decoration: none;
-      color: #EE7214; }
-      body nav a[class="nav-link"]::before {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background-color: white;
-        transition: 0.3s ease-in-out;
-        transform: scaleX(0%); }
-      body nav a[class="nav-link"]:hover::before {
-        transform: scaleX(100%); }
-    body nav a:last-child {
-      position: absolute;
-      right: 0;
-      margin: 0px 20px;
-      background-color: #004cff;
       border-radius: 20px;
-      z-index: 0;
-      border: 2px solid white;
-      text-decoration: none;
-      height: 50px;
-      width: 160px;
+      padding: 10px; }
+      body nav div[id="profile"] img {
+        padding: 10px;
+        border-radius: 50%;
+        background-color: white; }
+      body nav div[id="profile"] p {
+        margin: 6px 0px;
+        color: #EE7214; }
+        body nav div[id="profile"] p span {
+          display: block;
+          font-style: italic;
+          margin: 4px 0px;
+          cursor: default; }
+          body nav div[id="profile"] p span:hover {
+            color: white;
+            text-decoration: underline; }
+      body nav div[id="profile"] i {
+        font-size: 1.3rem;
+        padding: 12px;
+        margin: 20px 10px;
+        border-radius: 50%;
+        background: radial-gradient(white 40%, #EE7214);
+        transition: all 0.3s ease-in-out; }
+      body nav div[id="profile"] > i:hover {
+        transform: rotate(60deg); }
+    body nav div[id="social-links"] > i {
       font-size: 1.3rem;
-      overflow: hidden;
-      text-align: center; }
-      body nav a:last-child span {
-        display: grid;
-        align-content: center;
-        width: 100%;
-        height: 100%;
-        color: white;
-        position: relative;
-        background: transparent; }
-        body nav a:last-child span::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          z-index: -1;
-          background-color: #2565fa;
-          width: 0;
-          transition: 0.3s ease-in-out; }
-      body nav a:last-child:hover span::before {
-        width: 100%; }
+      padding: 12px;
+      margin: 20px 6px;
+      border-radius: 50%;
+      background-color: white;
+      color: #EE7214; }
   body main {
     position: relative;
     width: 67%;
@@ -266,3 +244,11 @@ body {
 .active {
   height: 250px;
   bottom: -370%; }
+
+.initial {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  height: 50px;
+  width: 10%;
+  overflow: hidden; }
