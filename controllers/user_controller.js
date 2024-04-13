@@ -1,19 +1,27 @@
 const User = require('../model/users_model.js');
+const Task = require('../model/task_model.js');
 
 module.exports.signin = (req, res)=>{
     if(!req.isAuthenticated())
         return res.render('user-signin');
     else
-        res.redirect('back');
+        res.redirect('/home');
 };
 
 module.exports.signup = (req, res)=>{
     if(!req.isAuthenticated())
         return res.render('user-signup');
     else
-        res.redirect('back');
+        res.redirect('/home');
 };
 
+module.exports.logout = (req, res) => {
+    req.logout((err) => {
+        if (err) console.log(err);
+        else
+            return res.redirect("/");
+    });
+}
 module.exports.profile = (req, res)=>{
     return res.render('profile');
 };
@@ -38,6 +46,6 @@ module.exports.create = async function(req, res){
     }
 }
 
-module.exports.authorize = (req, res)=>{
-    res.redirect('/');
+module.exports.authorize = (req, res) => {
+    res.redirect('/home');
 }

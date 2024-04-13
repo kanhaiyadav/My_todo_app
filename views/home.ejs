@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Todo App</title>
+    <title>ToDo</title>
+    <link rel="icon" href="./images/favicon.png">
     <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    <a id="signin" href="/user/signin">Sign in</a>
-    <a id="signup" href="/user/signup">Sign up</a>
+    <!-- <a class="sign" id="signin" href="/user/signin">Sign in</a>
+    <a class="sign" id="signup" href="/user/signup">Sign up</a>
+    <a class="sign" id="logout" href="/user/logout">Log out</a> -->
+    <nav>
+        <div id="icon">
+          <img src="/images/favicon.png" alt="">
+          <span>ToDo</span>
+        </div>
+        <div id="profile">
+
+        </div>
+    </nav>
     <main>
         <p>Try adding a task:</p>
         <form id="add-task" action="/new-task" method="post">
             <div >
                 <textarea name="description" id="" cols="30" rows="5" placeholder="Description...." required></textarea>
                 <input type="text" name="category" placeholder="Choose a category..." required>
-                <img id="arrow" src="./images/down.png" alt="">
+                <img id="arrow" src="../images/down.png" alt="">
                 <ul class="list">
                     <li>School or College</li>
                     <li>Work</li>
@@ -27,20 +38,19 @@
                 <input type="date" name="date" required>
             </div>
             <button type="submit" form="add-task"><i class="fa-solid fa-plus"></i><span>Add Task</span></button>
-            <button type="submit" form="task-container"><i class="fa-solid fa-trash-can"></i><span>Delete Task</span></button>
         </form>
 
         <p><i class="fa-regular fa-hourglass-half"></i><span>Pending Tasks:</span> </p>
         <form id="task-container" action="/del-tasks" method="post">
-            <% for(let i of tasks) {%>
+            <% for(let task of user.tasks) {%>
                 <div class="task">
-                    <input class="tick" type="checkbox" name=<%=i._id %>  value=<%=i._id %>>
-                    <p><span class="task-description"><%=i.description %></span><span class="label"><%=i.category %></span></p>
-                    <p><i class="fa-solid fa-calendar-days"></i><span class="date"><%=i.date %></span></p>
+                    <a href="/delete-task/<%=task._id %>"><i class="fa-solid fa-trash-can"></i></a>
+                    <p><span class="task-description"><%=task.description %></span><span class="label"><%=task.category %></span></p>
+                    <p><i class="fa-solid fa-calendar-days"></i><span class="date"><%=task.date %></span></p>
                 </div>
                 <% } %>
         </form>    
     </main>
-    <script type="text/javascript" src="./js/home.js"></script>
+    <script type="text/javascript" src="../js/home.js"></script>
 </body>
 </html>

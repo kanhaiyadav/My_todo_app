@@ -1,20 +1,12 @@
-@import "./variables.scss";
 @import "./mixin";
-body {
-    font-family: $base-font-family;
-    background-image: url(../images/b5.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    backdrop-filter: blur(5px);
-    min-height: 100vh;
-    nav {
+@import "./variables";
+ nav {
         position: relative;
-        top: 10px;
-        width: 98%;
-        margin: auto;
-        position: relative;
-        padding: $base-padding;
-        @include center(row);
+        width: 20%;
+        padding: $base-padding*2;
+        @include center(column);
+        justify-content: flex-start;
+        min-height: 87vh;
         &::before {
             @include full_before();
             background-color: rgba(205, 205, 205, 0.6);
@@ -22,7 +14,7 @@ body {
             border-radius: $base-border-radius * 2.5;
             border: 2px solid white;
         }
-        div {
+        div[id="icon"] {
             position: relative;
             padding: 2px $base-padding;
             border-radius: $base-border-radius * 1.5;
@@ -40,6 +32,13 @@ body {
                 color: rgb(59, 68, 91);
                 vertical-align: center;
             }
+        }
+        div[id="profile"]{
+            width: 95%;
+            min-height: 200px;
+            background-color: $alternate-color;
+            margin:$base-margin 0px;
+            border-radius: $base-border-radius*2;
         }
         a[class="nav-link"] {
             margin: 0px 30px;
@@ -96,7 +95,3 @@ body {
             }
         }
     }
-    h1 {
-        font-size: $base-font-size * 4.6;
-    }
-}
