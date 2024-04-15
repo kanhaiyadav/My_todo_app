@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
     <link rel="icon" href="./images/favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/home.css">
 </head>
+
 <body>
-    <nav class = "initial">
+    <nav class="initial">
         <div id="icon">
-          <img src="/images/favicon.png" alt="">
-          <span>ToDo</span>
+            <img src="/images/favicon.png" alt="">
+            <span>ToDo</span>
         </div>
         <div id="profile">
             <a href="/user/profile"><img src="../images/user (1).png" alt=""></a>
-            <p><%=user.name %><span><%=user.email %></span></p>
+            <p>
+                <%=user.name %><span>
+                        <%=user.email %>
+                    </span>
+            </p>
             <i class="fa-solid fa-gear"></i>
             <a href="/user/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
@@ -30,7 +39,7 @@
     <main>
         <p>Try adding a task:</p>
         <form id="add-task" action="/new-task" method="post">
-            <div >
+            <div>
                 <textarea name="description" id="" cols="30" rows="5" placeholder="Description...." required></textarea>
                 <input type="text" name="category" placeholder="Choose a category..." required>
                 <img id="arrow" src="../images/down.png" alt="">
@@ -47,16 +56,25 @@
         </form>
 
         <p><i class="fa-regular fa-hourglass-half"></i><span>Pending Tasks:</span> </p>
-        <form id="task-container" action="/del-tasks" method="post">
+        <div id="task-container">
+            <% if(user.tasks){ %>
             <% for(let task of user.tasks) {%>
-                <div class="task">
+                <div id="task-<%=task._id %>" class="task">
                     <a href="/delete-task/<%=task._id %>"><i class="fa-solid fa-trash-can"></i></a>
-                    <p><span class="task-description"><%=task.description %></span><span class="label"><%=task.category %></span></p>
-                    <p><i class="fa-solid fa-calendar-days"></i><span class="date"><%=task.date %></span></p>
+                    <p><span class="task-description">
+                            <%=task.description %>
+                        </span><span class="label">
+                            <%=task.category %>
+                        </span></p>
+                    <p><i class="fa-solid fa-calendar-days"></i><span class="date">
+                            <%=task.date %>
+                        </span></p>
                 </div>
                 <% } %>
-        </form>    
+            <% }%>
+        <div/>
     </main>
     <script type="text/javascript" src="../js/home.js"></script>
 </body>
+
 </html>

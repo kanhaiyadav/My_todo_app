@@ -107,7 +107,7 @@ body {
       filter: blur(1px);
       z-index: -1; }
     body main > p {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       margin-left: 20px;
       font-size: 1.69rem; }
     body main form[id="add-task"] {
@@ -186,23 +186,23 @@ body {
           border: 1px solid black; }
         body main form[id="add-task"] button span {
           padding: 10px; }
-    body main form[id="task-container"] {
+    body main div[id="task-container"] {
       flex-direction: column;
       max-height: 41.3%;
       width: 100%;
       overflow: scroll; }
-      body main form[id="task-container"]::-webkit-scrollbar {
+      body main div[id="task-container"]::-webkit-scrollbar {
         display: none; }
-      body main form[id="task-container"] div {
+      body main div[id="task-container"] div[class="task"] {
         position: relative;
         width: 91.5%;
         border-radius: 15px;
         margin: 10px 0px;
         background-color: #fff78a63;
         padding: 10px 40px; }
-        body main form[id="task-container"] div:hover {
+        body main div[id="task-container"] div[class="task"]:hover {
           border: 2px solid #EE7214; }
-        body main form[id="task-container"] div i[class="fa-solid fa-trash-can"] {
+        body main div[id="task-container"] div[class="task"] i[class="fa-solid fa-trash-can"] {
           color: black;
           position: absolute;
           left: 10px;
@@ -210,16 +210,16 @@ body {
           padding: 10px;
           font-size: 1.3rem;
           border-radius: 50%; }
-          body main form[id="task-container"] div i[class="fa-solid fa-trash-can"]:hover {
+          body main div[id="task-container"] div[class="task"] i[class="fa-solid fa-trash-can"]:hover {
             color: #EE7214;
             background-color: white;
             box-shadow: 0px 0px 8px 5px #f9954a; }
-        body main form[id="task-container"] div p {
+        body main div[id="task-container"] div[class="task"] p {
           font-size: 1.5rem;
           margin-left: 20px; }
-          body main form[id="task-container"] div p span[class="task-description"] {
+          body main div[id="task-container"] div[class="task"] p span[class="task-description"] {
             margin: 0px; }
-          body main form[id="task-container"] div p span[class="label"] {
+          body main div[id="task-container"] div[class="task"] p span[class="label"] {
             font-size: 1.3rem;
             color: #EE7214;
             position: absolute;
@@ -229,11 +229,11 @@ body {
             top: 20%;
             right: 30px;
             border-radius: 20px; }
-          body main form[id="task-container"] div p span[class="date"] {
+          body main div[id="task-container"] div[class="task"] p span[class="date"] {
             font-size: 1.04rem;
             color: #5a5a5a;
             padding: 0px 10px; }
-          body main form[id="task-container"] div p i {
+          body main div[id="task-container"] div[class="task"] p i {
             font-size: 1.3rem;
             color: #EE7214; }
 
