@@ -8,6 +8,7 @@ const passportLocal = require('./config/passport.js');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
+const flash = require('connect-flash');
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -36,6 +37,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 
+app.use(flash());
+
 app.use(cookieParser());
 app.use(express.static('./assets'));
 app.use(express.urlencoded({extended: true}))
@@ -49,3 +52,4 @@ app.listen(port, function(err){
     }
     console.log('Your server is up and running...');
 })
+
