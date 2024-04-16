@@ -62,9 +62,10 @@ let create_task = () => {
             type: "POST",
             data: add_form.serialize(),
             success: function (data) {
-                newTask(data.data.task);
+                let new_task = newTask(data.data.task);
+                $("#task-container").prepend(new_task);
                 createTaskForm.reset();
-                delete_task($('div[class="task"] a'));
+                delete_task($(' .delete-link', new_task));
             },
             error: function (err) {
                 console.log(err.responceText);
@@ -74,9 +75,8 @@ let create_task = () => {
 }
 
 let newTask = (task) => {
-    let task_container = $("#task-container");
-    task_container.prepend(`<div id="task-${task._id}" class="task">
-                    <a href="/delete-task/${task._id}"><i class="fa-solid fa-trash-can"></i></a>
+    return $(`<div id="task-${task._id}" class="task">
+                    <a class="delete-link" href="/delete-task/${task._id}"><i class="fa-solid fa-trash-can"></i></a>
                     <p><span class="task-description">
                             ${task.description}
                         </span><span class="label">
