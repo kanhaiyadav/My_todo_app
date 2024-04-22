@@ -12,82 +12,102 @@ body {
   justify-content: space-evenly;
   align-items: center;
   font-family: sans-serif; }
-  body nav {
-    position: relative;
-    width: 20%;
-    padding: 20px;
+  body div[id="sidebar"] {
+    height: 90vh;
+    position: fixed;
+    left: 10px;
+    top: 25px;
+    padding: 10px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    z-index: 1000;
+    font-size: 1.3rem; }
+    body div[id="sidebar"] button {
+      font-size: 1.3rem;
+      outline: none;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      border: 1px solid #EE7214; }
+      body div[id="sidebar"] button i {
+        color: #EE7214; }
+    body div[id="sidebar"] > i {
+      color: white;
+      padding: 10px;
+      border-radius: 50%; }
+      body div[id="sidebar"] > i:hover {
+        background-color: #fff78a63; }
+  body nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 2%;
+    background-color: rgba(200, 200, 200, 0.662);
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 87vh; }
-    body nav::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      background-color: rgba(205, 205, 205, 0.6);
-      filter: blur(1px);
-      border-radius: 25px;
-      border: 2px solid white; }
-    body nav div[id="icon"] {
+    padding: 10px;
+    transition: width 0.1s linear; }
+    body nav:hover {
+      width: 13%; }
+    body nav:hover div span {
+      display: inline-block; }
+    body nav div {
       position: relative;
-      padding: 2px 10px;
-      border-radius: 15px;
-      background: white;
-      padding: 4px 10px;
+      background-color: ghostwhite;
+      width: 90%;
+      border-radius: 10px;
+      padding: 5px;
       display: flex;
+      flex-direction: row;
       align-items: center;
-      flex-direction: row; }
-      body nav div[id="icon"] img {
-        width: 45px; }
-      body nav div[id="icon"] span {
-        font-size: 2.5rem;
-        font-weight: 700;
+      justify-content: center;
+      left: -5px; }
+      body nav div img {
+        width: 33px; }
+      body nav div span {
+        font-size: 1.5rem;
+        position: relative;
+        top: 4px;
+        font-weight: 900;
         font-style: italic;
-        color: #3b445b;
-        vertical-align: center; }
-    body nav div[id="profile"] {
-      text-align: center;
-      width: 95%;
-      background-color: #fff78a63;
+        color: #3c4d5d;
+        display: none; }
+    body nav:hover ul li span {
+      display: inline-block; }
+    body nav:hover ul p {
+      display: block; }
+    body nav ul {
+      list-style: none;
       margin: 20px 0px;
-      border-radius: 20px;
-      padding: 10px; }
-      body nav div[id="profile"] img {
-        padding: 10px;
-        border-radius: 50%;
-        background-color: white; }
-      body nav div[id="profile"] p {
-        margin: 6px 0px;
-        color: #EE7214; }
-        body nav div[id="profile"] p span {
-          display: block;
-          font-style: italic;
-          margin: 4px 0px;
-          cursor: default; }
-          body nav div[id="profile"] p span:hover {
-            color: white;
-            text-decoration: underline; }
-      body nav div[id="profile"] i {
+      padding: 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: nowrap; }
+      body nav ul p {
         font-size: 1.3rem;
-        padding: 12px;
-        margin: 20px 10px;
-        border-radius: 50%;
-        background: radial-gradient(white 40%, #EE7214);
-        transition: all 0.3s ease-in-out; }
-      body nav div[id="profile"] > i:hover {
-        transform: rotate(60deg); }
-    body nav div[id="social-links"] > i {
-      font-size: 1.3rem;
-      padding: 12px;
-      margin: 20px 6px;
-      border-radius: 50%;
-      background-color: white;
-      color: #EE7214; }
+        position: relative;
+        left: -10px;
+        color: #EE7214;
+        display: none; }
+      body nav ul a {
+        color: black; }
+        body nav ul a li {
+          font-size: 1.5rem;
+          padding: 8px 5px;
+          white-space: nowrap;
+          border-radius: 10px; }
+          body nav ul a li:hover {
+            background-color: #fff78a63; }
+          body nav ul a li span {
+            font-size: 1.1rem;
+            margin: 0px 0px 0px 10px;
+            display: none;
+            white-space: nowrap; }
   body main {
     position: relative;
     width: 67%;
@@ -246,9 +266,4 @@ body {
   bottom: -370%; }
 
 .initial {
-  position: absolute;
-  top: 25px;
-  left: 25px;
-  height: 50px;
-  width: 10%;
-  overflow: hidden; }
+  display: none; }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>settings</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <h2>hello <%=user.name %></h2><br>
+    <img src="<%=user.avatar %>" alt="<%=user.name %>"><br>
+    <div id="menu">
+
+    </div>
+    <main>
+        <form id="update-form" action="/user/update" method="post" enctype="multipart/form-data">
+            <label for="upload"><i class="fa-solid fa-upload"></i></label>
+            <input type="file" id="upload" name="avatar">
+            <input type="text" name="name">
+            <div id="preview"></div>
+            <button type="submit">Update</button>
+        </form>
+        <a href="/home">Home</a>
+    </main>
+    <script type="text/javascript" src="../js/settings.js"></script>
+</body>
+
+</html>
+<!-- 
+
+<nav>
+    <div id="icon">
+        <img src="/images/favicon.png" alt="">
+        <span>ToDo</span>
+    </div>
+    <div id="profile">
+        <div>
+            <img src="<%=user.avatar %>">
+        </div>
+        <p>
+            <%=user.name %><span>
+                    <%=user.email %>
+                </span>
+        </p>
+        <a href="/user/settings"><i class="fa-solid fa-gear"></i></a>
+        <a href="/user/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+    </div>
+    <div id="social-links">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-linkedin-in"></i>
+        <i class="fa-brands fa-facebook-f"></i>
+        <i class="fa-brands fa-instagram"></i>
+    </div>
+</nav> -->

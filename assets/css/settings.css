@@ -1,0 +1,19 @@
+body {
+  background-color: pink; }
+
+input[type="file"] {
+  display: none; }
+
+label {
+  background-color: #20347c;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 1.5rem; }
+
+a {
+  position: relative;
+  top: 100px; }
+
+img {
+  width: 200px; }

@@ -9,6 +9,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
+const path = require('path');
+
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -41,7 +43,9 @@ app.use(flash());
 
 app.use(cookieParser());
 app.use(express.static('./assets'));
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
+app.use("/uploads", express.static(__dirname + "/uploads"));
+console.log(__dirname + "/uploads");
 app.use('/', require('./routes/index.js'));
 
 app.listen(port, function(err){
