@@ -6,7 +6,7 @@ let input = document.querySelector('input[type="text"]');
 // let tick = document.querySelectorAll(".tick");
 let todo_button = document.getElementById("icon");
 let task = document.querySelectorAll(".task");
-let nav = document.querySelector("body>nav");
+let nav = document.querySelector("body nav");
 let deg = 0;
 let main = '#EE7214'
 
@@ -31,9 +31,8 @@ for (let i = 0; i < li.length; i++) {
     })
 }
 
-todo_button.addEventListener("click", (event) => {
-    event.preventDefault();
-    nav.classList.toggle('initial');
+$("#sidebar>button").click(() => {
+    $("body nav").toggle(300);
 })
 
 
@@ -77,11 +76,17 @@ let create_task = () => {
 let newTask = (task) => {
     return $(`<div id="task-${task._id}" class="task">
                     <a class="delete-link" href="/delete-task/${task._id}"><i class="fa-solid fa-trash-can"></i></a>
-                    <p><span class="task-description">
+                    <p>
+                        <span class="task-description">
                             ${task.description}
-                        </span><span class="label">
+                        </span>
+                        <span>
+                            <a href="/edit-task/${task._id}">Edit</a>
+                        </span>
+                        <span class="label">
                             ${task.category}
-                        </span></p>
+                        </span>
+                    </p>
                     <p><i class="fa-solid fa-calendar-days"></i><span class="date">
                             ${task.date}
                         </span></p>

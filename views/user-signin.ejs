@@ -13,11 +13,11 @@
         <form id="signin-form" action="/user/authorize" method="post">
             <div class="container">
                 <label for="name">Enter you user name:</label>
-                <input id="user-name" type="text" name="email">
+                <input id="user-name" type="text" name="email" required>
             </div>
             <div class="container">
                 <label for="password">Enter the password:</label>
-                <input id="password" type="password" name="password">
+                <input id="password" type="password" name="password" required>
             </div>
             <button form="signin-form" type="submit">sign in</button>
             <a href="/"><button type="button">back</button></a>
