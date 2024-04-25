@@ -52,7 +52,8 @@ body {
           height: 100px;
           border-radius: 50%;
           object-fit: cover;
-          margin-left: 10px; }
+          margin-left: 10px;
+          background-color: white; }
         body section#content div[id="profile"] div {
           margin: 0px 20px;
           position: relative;
@@ -112,6 +113,7 @@ body {
             height: 100px;
             object-fit: cover;
             border-radius: 50%;
+            background-color: white;
             border: 5px solid #EE7214; }
           body section#content form label[for="upload"] i {
             position: relative;

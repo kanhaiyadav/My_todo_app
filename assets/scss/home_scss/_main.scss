@@ -78,6 +78,8 @@ main {
                 overflow: hidden;
                 z-index: 99;
                 transition: $base-transition;
+                overflow: scroll;
+                overflow-x:hidden;
                 li {
                     padding: $base-td-padding * 1.4 $base-rl-padding;
                     margin: $base-td-margin * 1.4 $base-rl-margin;

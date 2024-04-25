@@ -181,7 +181,9 @@ body {
           padding: 0px;
           overflow: hidden;
           z-index: 99;
-          transition: all 0.3s ease-in-out; }
+          transition: all 0.3s ease-in-out;
+          overflow: scroll;
+          overflow-x: hidden; }
           body main form[id="add-task"] div ul li {
             padding: 7px 10px;
             margin: 14px 10px;

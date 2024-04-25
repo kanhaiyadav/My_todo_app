@@ -57,6 +57,7 @@ body {
                     border-radius: 50%;
                     object-fit: cover;
                     margin-left: 10px;
+                    background-color: white;
                 }
                 div {
                     margin: 0px $base-margin;
@@ -127,6 +128,7 @@ body {
                         height: 100px;
                         object-fit: cover;
                         border-radius: 50%;
+                        background-color: white;
                         border: 5px solid $base-style-color;
                     }
                     i {

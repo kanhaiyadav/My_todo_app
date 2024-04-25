@@ -34,7 +34,20 @@ for (let i = 0; i < li.length; i++) {
 $("#sidebar>button").click(() => {
     $("body nav").toggle(300);
 })
-
+$(".delete-link").click(function (event) {
+    event.preventDefault();
+    $.ajax({
+        url: $(this).prop('href'),
+        type: 'get',
+        success: function (data) {
+            console.log(data);
+            $(`#task-${data.data.task_id}`).remove();
+        },
+        error: function (err) {
+            console.log(err.responceText);
+        }
+    })
+})
 
 let delete_task = (delete_link) => {
     $(delete_link).click(function (event) {
