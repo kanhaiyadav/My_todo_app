@@ -11,22 +11,40 @@
 </head>
 
 <body>
-    <h1>Welcome</h1>
-    <h2>hello <%=user.name %></h2><br>
-    <img src="<%=user.avatar %>" alt="<%=user.name %>"><br>
-    <div id="menu">
+    <section id="nav">
+        <a href="/home"><i class="fa-solid fa-arrow-left"></i></a>
+        <h1>Settings</h1>
+        <ul>
+            <li><i class="fa-solid fa-address-card"></i>profile</li>
+            <li><i class="fa-solid fa-brush"></i>theme</li>
+            <li><i class="fa-solid fa-sliders"></i>customisations</li>
+        </ul>
+    </section>
 
-    </div>
-    <main>
+    <section id="content">
+        <div id="profile">
+            <img src="<%=user.avatar %>" alt="<%=user.name %>">
+            <div>
+                <p id="name"><%=user.name %></p>
+                <span><%=user.email %></span>
+            </div>
+            <div id="buttons">
+                <a id="edit-button">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+                <a href="/user/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+            </div>
+        </div>
         <form id="update-form" action="/user/update" method="post" enctype="multipart/form-data">
-            <label for="upload"><i class="fa-solid fa-upload"></i></label>
+            <label for="name">New name</label>
+            <input id="name" type="text" name="name" value="<%=user.name%>" required>
+            <label for="upload"><img src="<%=user.avatar%>" alt=""><i class="fa-solid fa-upload"></i></label>
             <input type="file" id="upload" name="avatar">
-            <input type="text" name="name">
             <div id="preview"></div>
             <button type="submit">Update</button>
+            <button id="cancel">Cancel</button>
         </form>
-        <a href="/home">Home</a>
-    </main>
+    </section>
     <script type="text/javascript" src="../js/settings.js"></script>
 </body>
 

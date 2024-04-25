@@ -75,15 +75,17 @@ module.exports.update = async (req, res) => {
             if (await this.isFileExists(req, res)) {
                 fs.unlinkSync(path.join(__dirname, "..", user.avatar));
             }
+            console.log(user.avatar);
             user.avatar = User.avatarPath + '/' + req.file.filename;
+            console.log(user.avatar);
+            console.log(req.user);
             await user.save();
         }
         else {
-            console.log("file does not exist");
+            console.log("File does not exist");
         }
         await User.findByIdAndUpdate(req.user._id, req.body);
-        if (req.xhr)
-        {
+        if (req.xhr) {
             return res.status(200).json({
                 data: {
                     src: user.avatar,
