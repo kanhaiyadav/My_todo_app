@@ -1,9 +1,9 @@
 // Get references to the file input and the preview element
 const fileInput = document.querySelector("input[type='file']");
-const preview = document.getElementById('preview');
+const preview = document.querySelector("label[for='upload'] img");
 const submit_btn = document.querySelector('#update-form button[type="submit"]');
-const img = document.querySelector("body>img");
-const greet = document.querySelector("body>h2");
+const img = document.querySelector("#profile img");
+const user_name = document.getElementById('name');
 
 console.log(submit_btn);
 
@@ -21,8 +21,7 @@ fileInput.addEventListener('change', function () {
 
             // Set up the FileReader to read the selected file as a data URL
             reader.onload = function (e) {
-                preview.innerHTML = `<p>here is the preview:</p>
-                <img src="${e.target.result}" alt="Preview">`;
+                preview.src = e.target.result;
             };
 
             // Read the selected file as a data URL
@@ -50,12 +49,23 @@ $("#update-form").submit(function (event) {
         success: (data) => {
             console.log(data);
             img.src = data.data.src;
-            greet.innerText = "hello " + data.data.name;
+            user_name.innerText = data.data.name;
+            console.log(data.data.src);
             $("#update-form")[0].reset();
-            preview.innerHTML = "";
+            $("#update-form").slideToggle(500);
         },
         error: (error) => {
             console.log(error.responseText);
         },
     })
+})
+
+$("#edit-button").click(function (event) {
+    event.preventDefault();
+    $("#update-form").slideToggle(500);
+})
+
+$("#cancel").click(function (event) {
+    event.preventDefault();
+    $("#update-form").slideToggle(500);
 })
