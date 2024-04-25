@@ -52,10 +52,12 @@ module.exports.create = async function (req, res) {
         let user = await User.findOne({ email: req.body.email })
         if (!user) {
             try {
-                User.create(req.body);
+                user = await User.create(req.body);
+                user.avatar = User.avatarPath + '/' + "user (2).png";
+                await user.save();
                 return res.redirect('/user/signin');
             } catch (err) {
-                console.log('error in creating user while signing up');
+                console.log('error in creating user while signing up', err);
                 return;
             }
         } else {
