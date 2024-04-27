@@ -1,3 +1,15 @@
+@keyframes button {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.9);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
 @import "./variables.scss";
 * {
     margin: 0px;
@@ -186,94 +198,6 @@ body {
     }
 }
 
-// nav {
-//     position: relative;
-//     width: 20vw;
-//     padding: $base-padding * 2;
-//     @include center(column);
-//     justify-content: flex-start;
-//     height: 87vh;
-//     left:-30px;
-//     display: none;
-//     @include center(column);
-//     &::before {
-//         @include full_before();
-//         background-color: rgba(205, 205, 205, 0.6);
-//         filter: blur(1px);
-//         border-radius: $base-border-radius * 2.5;
-//         border: 2px solid white;
-//     }
-//     div[id="icon"] {
-//         position: relative;
-//         padding: 2px $base-padding;
-//         border-radius: $base-border-radius * 1.5;
-//         background: white;
-//         padding: 4px $base-padding;
-//         img {
-//             width: 45px;
-//         }
-//         span {
-//             font-size: 2.5rem;
-//             font-weight: 700;
-//             font-style: italic;
-//             color: rgb(59, 68, 91);
-//             vertical-align: center;
-//         }
-//     }
-//     div[id="profile"] {
-//         text-align: center;
-//         width: 95%;
-//         background-color: $alternate-color;
-//         margin: $base-margin 0px;
-//         border-radius: $base-border-radius * 2;
-//         padding: $base-padding;
-//         div{
-//             display: inline-block;
-//             width: 60px;
-//             height: 60px;
-//             background-color: white;
-//             border-radius: 50%;
-//             overflow: hidden;
-//             img {
-//                 height: 60px;
-//                 background-size: cover;
-//                 background-position: center;
-//             }
-//         }
-//         p {
-//             margin: $base-margin * 0.3 0px;
-//             color: $base-style-color;
-//             span {
-//                 display: block;
-//                 font-style: italic;
-//                 margin: $base-margin * 0.2 0px;
-//                 cursor: default;
-//                 &:hover {
-//                     color: white;
-//                     text-decoration: underline;
-//                 }
-//             }
-//         }
-//         i {
-//             font-size: $base-font-size;
-//             padding: $base-padding * 1.2;
-//             margin: $base-margin $base-margin * 0.5;
-//             border-radius: 50%;
-//             background: radial-gradient(white 40%, $base-style-color);
-//             transition: $base-transition;
-//         }
-//         > i:hover {
-//             transform: rotate(60deg);
-//         }
-//     }
-//     div[id="social-links"] {
-//         > i {
-//             font-size: $base-font-size;
-//             padding: $base-padding * 1.2;
-//             margin: $base-margin $base-margin * 0.3;
-//             border-radius: 50%;
-//             background-color: white;
-//             color: $base-style-color;
-//         }
-//     }
-// }
+.btn:active{
+    animation: button 0.3s linear 0s 1;
+}

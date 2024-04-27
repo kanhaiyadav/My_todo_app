@@ -58,3 +58,24 @@ module.exports.delete_task = async (req, res) => {
     }
 
 }
+
+module.exports.update = async (req, res) => {
+    try {
+        // let task = await Task.findById(req.body.id);
+        await Task.findByIdAndUpdate(req.body.id, req.body.form_data);
+        // await task.save();
+        res.status(200).json({
+            message: "updated successfully",
+            data: {
+                task_id: req.body.id,
+                task: await Task.findById(req.body.id)
+            }
+        })
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: err
+        })
+    }
+}
