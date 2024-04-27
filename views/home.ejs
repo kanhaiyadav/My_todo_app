@@ -29,29 +29,66 @@
             <a><li><i class="fa-solid fa-comments"></i><span>Feedback</span></li></a>
             <a><li><i class="fa-solid fa-lightbulb"></i><span>Suggest Feature</span></li></a>
         </ul>
-        <!-- <i class="fa-solid fa-gear"></i> -->
     </nav>
 
-    <main>
-        <p>Try adding a task:</p>
-        <form id="add-task" action="/new-task" method="post">
-            <div>
-                <textarea name="description" id="" cols="30" rows="5" placeholder="Description...." required></textarea>
-                <input type="text" name="category" placeholder="Choose a category..." required>
-                <img id="arrow" src="../images/down.png" alt="">
-                <ul class="list">
-                    <li>School or College</li>
-                    <li>Work</li>
-                    <li>Friend</li>
-                    <li>Cleaning</li>
-                    <li>Other</li>
-                </ul>
-                <input type="date" name="date" required>
-            </div>
-            <button type="submit" form="add-task"><i class="fa-solid fa-plus"></i><span>Add Task</span></button>
-        </form>
 
+    <!-- main section -->
+    <main>
+
+
+        <!-- add task form -->
+        <div>
+            <p id="new-task-button">New Task</p>
+            <form id="add-task" action="/new-task" method="post">
+                <div>
+                    <textarea name="description" id="" cols="30" rows="5" placeholder="Description...." required></textarea>
+                    <input type="text" name="category" placeholder="Choose a category..." required>
+                    <img id="arrow" src="../images/down.png" alt="">
+                    <ul class="list">
+                        <li>School or College</li>
+                        <li>Work</li>
+                        <li>Friend</li>
+                        <li>Cleaning</li>
+                        <li>Other</li>
+                    </ul>
+                    <input type="date" name="date" required>
+                </div>
+                <button type="submit" class="btn" form="add-task"><i class="fa-solid fa-plus"></i><span>Add Task</span></button>
+                <button type="button" class="btn reset" form="add-task"><i class="fa-solid fa-rotate-right"></i></i><span>Reset</span></button>
+                <button type="button" class="btn cancel" form="add-task"><i class="fa-solid fa-xmark"></i><span>Cancel</span></button>
+            </form>
+        </div>
+
+
+
+        <!-- update task form  -->
+        <div>
+            <form id="update-task" action="/update" method="post">
+                <div>
+                    <textarea name="description" id="" cols="30" rows="5" placeholder="Description...." required></textarea>
+                    <input type="text" name="category" placeholder="Choose a category..." required>
+                    <img id="arrow2" src="../images/down.png" alt="">
+                    <ul id="update-list">
+                        <li>School or College</li>
+                        <li>Work</li>
+                        <li>Friend</li>
+                        <li>Cleaning</li>
+                        <li>Other</li>
+                    </ul>
+                    <input type="date" name="date" required>
+                </div>
+                <button type="submit" class="btn" form="update-task"><i class="fa-solid fa-arrow-up-from-bracket"></i><span>Update</span></button>
+                <button type="button" class="btn reset" form="update-task"><i class="fa-solid fa-rotate-right"></i></i><span>Reset</span></button>
+                <button type="button" class="btn cancel" form="update-task"><i class="fa-solid fa-xmark"></i><span>Cancel</span></button>
+            </form>
+        </div>
+
+
+
+
+        <!-- rest -->
         <p><i class="fa-regular fa-hourglass-half"></i><span>Pending Tasks:</span> </p>
+        
         <div id="task-container">
             <% if(user.tasks){ %>
                 <% for(let task of user.tasks) {%>
@@ -64,13 +101,16 @@
                                 <%=task.description %>
                             </span>
                             <span>
-                                <a href="/edit-task/${task._id}">Edit</a>
+                                <a class="edit-link" href="" data-id="<%=task._id%>">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
                             </span>
                             <span class="label">
                                 <%=task.category %>
                             </span>
                         </p>
-                        <p><i class="fa-solid fa-calendar-days"></i><span class="date">
+                        <p><i class="fa-solid fa-calendar-days"></i>
+                            <span class="date">
                                 <%=task.date %>
                             </span></p>
                     </div>
