@@ -19,13 +19,10 @@ main {
     overflow: scroll;
     background-color: rgba(200, 200, 200, 0.662);
     box-shadow: 0px 0px 2px 2px rgba(200, 200, 200, 0.662);
-    display: grid;
-    grid-template-rows: 0.45fr 0.55fr;
     &::-webkit-scrollbar {
         display: none;
     }
     div {
-        display: grid;
         p[id="new-task-button"] {
             position: relative;
             font-family: "Poppins", sans-serif;
@@ -37,31 +34,33 @@ main {
             border: 2px solid $base-style-color;
             border-radius: $base-border-radius;
             width: 11%;
-            &::after{
+            cursor: pointer;
+            &::after {
                 content: "Create a new task";
                 position: absolute;
-                top:0px;
+                top: 0px;
                 left: 110%;
                 width: 155px;
-                font-size: $base-font-size*0.8;
-                color:ghostwhite;
+                font-size: $base-font-size * 0.8;
+                color: ghostwhite;
                 background-color: rgb(70, 70, 70);
-                padding: $base-padding*0.7 $base-padding;
-                border-radius: $base-border-radius*0.3;
+                padding: $base-padding * 0.7 $base-padding;
+                border-radius: $base-border-radius * 0.3;
                 display: none;
             }
-            &::before{
+            &::before {
                 content: "";
                 position: absolute;
                 background-color: rgb(70, 70, 70);
-                width:12px;
+                width: 12px;
                 height: 12px;
-                margin:$base-margin*0.5 0px;
+                margin: $base-margin * 0.5 0px;
                 transform: rotateZ(45deg);
-                left:106%;
+                left: 106%;
                 display: none;
             }
-            &:hover::before, &:hover::after{
+            &:hover::before,
+            &:hover::after {
                 display: block;
             }
         }
@@ -164,39 +163,40 @@ main {
             }
         }
     }
-    >p{
-        font-size: $base-font-size*1.1;
-        padding: $base-padding*0.5;
-        margin:$base-margin;
+    > p {
+        font-size: $base-font-size * 1.1;
+        padding: $base-padding * 0.5;
+        margin: $base-margin;
         border-bottom: 2px solid rgb(104, 104, 104);
-        i{
-            margin:0px $base-margin;
+        i {
+            margin: 0px $base-margin;
         }
     }
     div[id="task-container"] {
         flex-direction: column;
         min-height: 41.3%;
-        // max-height: 80%;
         width: 100%;
         overflow: scroll;
         &::-webkit-scrollbar {
             display: none;
         }
-        div[class="task"] {
-            position: relative;
-            width: 91.5%;
+        div.task {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 0.06fr 0.74fr 0.2fr;
             border-radius: $base-border-radius * 1.5;
             margin: $base-td-margin * 0.5 0px;
             background-color: $alternate-color;
-            padding: $base-td-padding * 2 $base-rl-padding * 4;
+            padding: $base-td-padding $base-rl-padding;
+            border: 2px solid $alternate-color;
             &:hover {
-                border: 2px solid $base-style-color;
+                border-color: $base-style-color;
+            }
+            &:active p.task-description{
+                white-space: normal;
             }
             i[class="fa-solid fa-trash-can"] {
                 color: black;
-                position: absolute;
-                left: 10px;
-                top: 18px;
                 padding: $base-padding;
                 font-size: $base-font-size;
                 border-radius: 50%;
@@ -207,35 +207,41 @@ main {
                 }
             }
 
-            p {
+            div {
                 font-size: 1.5rem;
-                margin-left: 20px;
-                span[class="task-description"] {
-                    margin: 0px;
-                }
-                a[class="edit-link"] {
-                    margin: 0px $base-margin;
-                }
-                span[class="label"] {
-                    font-size: $base-font-size;
-                    color: $base-style-color;
-                    position: absolute;
-                    background-color: ghostwhite;
-                    padding: $base-padding;
-                    align-self: center;
-                    top: 20%;
-                    right: 30px;
-                    border-radius: $base-border-radius * 2;
-                }
-                span[class="date"] {
-                    font-size: $base-font-size * 0.8;
-                    color: rgb(90, 90, 90);
-                    padding: 0px $base-padding;
+                div.description {
+                    display: grid;
+                    grid-template-columns: 0.95fr 0.05fr;
+                    p.task-description {
+                        position: relative;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        &:hover {
+                            white-space: normal;
+                        }
+                    }
                 }
                 i {
                     font-size: $base-font-size;
                     color: $base-style-color;
+                    margin-right: $base-margin;
                 }
+                span.date {
+                    font-size: $base-font-size * 0.8;
+                    color: rgb(90, 90, 90);
+                }
+            }
+            p.label {
+                text-align: center;
+                font-size: $base-font-size;
+                color: $base-style-color;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                background-color: ghostwhite;
+                padding: $base-padding;
+                border-radius: $base-border-radius * 2;
             }
         }
     }

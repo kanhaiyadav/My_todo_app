@@ -4,7 +4,6 @@ let li = document.querySelectorAll(".list li");
 let createTaskForm = document.querySelector('form[id="add-task"]');
 let updateForm = document.querySelector('form[id="update-task"]');
 let input = document.querySelector('input[type="text"]');
-
 let task = document.querySelectorAll(".task");
 let nav = document.querySelector("body nav");
 let deg = 0;
@@ -23,20 +22,19 @@ let edit_link_handler = (event) => {
     $("#add-task").slideUp(300);
     curr_id = $(event.target).parent().data('id');
     console.log(curr_id);
-    console.log(document.querySelector(`#task-${curr_id} span.date`).innerText);
     let mydate = new Date(document.querySelector(`#task-${curr_id} span.date`).innerText);
     console.log(mydate);
     const formattedDate = mydate.toISOString().substring(0, 10);
     console.log(formattedDate);
-    $("#update-task").find("textarea[name=description]").val(document.querySelector(`#task-${curr_id} span.task-description`).innerText);
-    $("#update-task").find("input[name=category]").val(document.querySelector(`#task-${curr_id} span.label`).innerText);
+    $("#update-task").find("textarea[name=description]").val(document.querySelector(`#task-${curr_id} p.task-description`).innerText);
+    $("#update-task").find("input[name=category]").val(document.querySelector(`#task-${curr_id} p.label`).innerText);
     $("#update-task").find("input[name=date]").val(formattedDate);
 }
 
-let create_form_toggle = ()=>{
+let create_form_toggle = () => {
     $("#add-task").slideToggle(300);
 }
-let update_form_toggle = ()=>{
+let update_form_toggle = () => {
     $("#update-task").slideToggle(300);
 }
 
@@ -47,14 +45,12 @@ $("#arrow2").click(() => {
     $("#update-list").slideToggle(400);
 })
 $("#update-list li").click((event) => {
-    if($(event.target).text() == 'Other')
-    {
+    if ($(event.target).text() == 'Other') {
         $("#update-task input[name=category]").val('');
         $("#update-task input[name=category]").attr("placeholder", "Enter other category..");
         $("#update-task input[name=category]").focus();
     }
-    else
-    {
+    else {
         $("#update-task input[name=category]").val($(event.target).text());
     }
     $("#update-list").slideToggle(400);
@@ -83,10 +79,23 @@ $(".delete-link").click(function (event) {
         url: $(this).prop('href'),
         type: 'get',
         success: function (data) {
-            console.log(data);
+            new Noty({
+                theme: 'relax',
+                timeout: 2000,
+                type: 'success',
+                layout: 'topCenter',
+                text: data.message
+            }).show();
             $(`#task-${data.data.task_id}`).remove();
         },
         error: function (err) {
+            new Noty({
+                theme: 'relax',
+                timeout: 2000,
+                type: 'error',
+                layout: 'topCenter',
+                text: err.responseJSON.message
+            }).show();
             console.log(err.responceText);
         }
     })
@@ -99,10 +108,24 @@ let delete_task = (delete_link) => {
             url: $(delete_link).prop('href'),
             type: 'get',
             success: function (data) {
+                new Noty({
+                    theme: 'relax',
+                    timeout: 2000,
+                    type: 'success',
+                    layout: 'topCenter',
+                    text: data.message
+                }).show();
                 console.log(data);
                 $(`#task-${data.data.task_id}`).remove();
             },
             error: function (err) {
+                new Noty({
+                    theme: 'relax',
+                    timeout: 2000,
+                    type: 'error',
+                    layout: 'topCenter',
+                    text: err.responseJSON.message
+                }).show();
                 console.log(err.responceText);
             }
         })
@@ -113,10 +136,17 @@ let create_task = () => {
     add_form.submit((e) => {
         e.preventDefault();
         $.ajax({
-            url: "/new-task",
+            url: "/task/create",
             type: "POST",
             data: add_form.serialize(),
             success: function (data) {
+                new Noty({
+                    theme: 'relax',
+                    timeout:2000,
+                    type: 'success',
+                    layout: 'topCenter',
+                    text: data.message
+                }).show();
                 let new_task = newTask(data.data.task);
                 $("#task-container").prepend(new_task);
                 delete_task($(' .delete-link', new_task));
@@ -125,6 +155,13 @@ let create_task = () => {
                 create_form_toggle();
             },
             error: function (err) {
+                new Noty({
+                    theme: 'relax',
+                    timeout: 2000,
+                    type: 'error',
+                    layout: 'topCenter',
+                    text: err.responseJSON.message
+                }).show();
                 console.log(err.responceText);
             }
         })
@@ -133,22 +170,32 @@ let create_task = () => {
 
 let newTask = (task) => {
     return $(`<div id="task-${task._id}" class="task">
-                    <a class="delete-link" href="/delete-task/${task._id}"><i class="fa-solid fa-trash-can"></i></a>
-                    <p>
-                        <span class="task-description">
-                            ${task.description}
-                        </span>
-                        <span>
-                            <a class="edit-link" href="" data-id="${task._id}"><i class="fa-solid fa-pen-to-square"></i></a>
-                        </span>
-                        <span class="label">
-                            ${task.category}
-                        </span>
+                    <a class="delete-link" href="/task/delete/${task._id}">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                    <div>
+                        <div class="description">
+                                <p class="task-description">
+                                    ${task.description}
+                                </p>
+                                <span>
+                                    <a class="edit-link" href="" data-id="${task._id}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                </span>
+                            </div>
+                        <p>
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <span class="date">
+                                ${new Date(task.date)}
+                            </span>
+                        </p>
+                    </div>
+                    <p class="label">
+                        ${task.category}
                     </p>
-                    <p><i class="fa-solid fa-calendar-days"></i><span class="date">
-                            ${new Date(task.date)}
-                        </span></p>
-                </div>`)
+                </div>`
+    )
 }
 
 create_task();
@@ -168,6 +215,7 @@ $("#update-task button.reset").click(() => {
 
 $(".edit-link").click(edit_link_handler);
 
+
 $("#update-task").submit(function (event) {
     event.preventDefault();
     let formData = new FormData(this);
@@ -175,22 +223,35 @@ $("#update-task").submit(function (event) {
     let data = $('#update-task').serialize();
     console.log(data.category);
     $.ajax({
-        url: "/update",
+        url: "/task/update",
         type: 'post',
         data: {
             form_data: jsonData,
             id: curr_id
         },
         success: function (data) {
-            console.log(data);
-            console.log(document.querySelector(`#task-${data.data.task._id} span.task-description`));
-            document.querySelector(`#task-${data.data.task._id} span.task-description`).innerText = data.data.task.description;
-            document.querySelector(`#task-${data.data.task._id} span.label`).innerText = data.data.task.category;
-            document.querySelector(`#task-${data.data.task._id} span.date`).innerText = data.data.task.date;
+            new Noty({
+                theme: 'relax',
+                timeout: 2000,
+                type: 'success',
+                layout: 'topCenter',
+                text: data.message
+            }).show();
+            console.log(document.querySelector(`#task-${data.data.task._id} p.task-description`));
+            document.querySelector(`#task-${data.data.task._id} p.task-description`).innerText = data.data.task.description;
+            document.querySelector(`#task-${data.data.task._id} p.label`).innerText = data.data.task.category;
+            document.querySelector(`#task-${data.data.task._id} span.date`).innerText = new Date(data.data.task.date);
             updateForm.reset();
             update_form_toggle();
         },
         error: function (err) {
+            new Noty({
+                theme: 'relax',
+                timeout: 2000,
+                type: 'error',
+                layout: 'topCenter',
+                text: err.responseJSON.message
+            }).show();
             console.log(err.responceText);
         }
     })

@@ -5,7 +5,9 @@ const fs = require("fs");
 
 module.exports.signin = (req, res) => {
     if (!req.isAuthenticated())
+    {
         return res.render('user-signin');
+    }
     else
         res.redirect('/home');
 };
@@ -21,7 +23,10 @@ module.exports.logout = (req, res) => {
     req.logout((err) => {
         if (err) console.log(err);
         else
+        {
+            req.flash("success", "Logged out successfully");
             return res.redirect("/");
+            }
     });
 }
 
@@ -55,12 +60,14 @@ module.exports.create = async function (req, res) {
                 user = await User.create(req.body);
                 user.avatar = User.avatarPath + '/' + "user (2).png";
                 await user.save();
+                req.flash('success', 'User created successfully!');
                 return res.redirect('/user/signin');
             } catch (err) {
                 console.log('error in creating user while signing up', err);
                 return;
             }
         } else {
+            req.flash("error", "User already exists!");
             return res.redirect('back');
         }
     } catch (err) {
@@ -103,5 +110,6 @@ module.exports.update = async (req, res) => {
 }
 
 module.exports.authorize = (req, res) => {
+    req.flash("success", "Logged in successfully");
     res.redirect('/home');
 }

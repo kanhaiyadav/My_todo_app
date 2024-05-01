@@ -13,7 +13,8 @@ router.get('/profile',passport.checkAuthenticated, user_controller.profile);
 router.post('/create_user', user_controller.create);
 router.post('/update', User.uploadedAvatar, user_controller.update);
 router.post('/authorize',passport.authenticate('local',{
-    failureRedirect:'/user/signin'
+    failureRedirect: '/user/signin',
+    failureFlash: "Invalid username or password",
 }) ,user_controller.authorize);
 
 module.exports = router;

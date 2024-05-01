@@ -36,9 +36,9 @@ body {
         display: flex;
         justify-content: center;
         position: relative;
-        &::before {
-            @include blur();
-        }
+        border-radius: $base-border-radius*2;
+        background-color: rgba(202, 202, 202, 0.726);
+        box-shadow: 0px 0px 2px 2px rgba(200, 200, 200, 0.662);
         form {
             background: transparent;
             width: 80%;
@@ -54,6 +54,7 @@ body {
                     position: absolute;
                     top: 30%;
                     left: 5%;
+                    border-radius: $base-border-radius*0.4;
                     transition: 0.2s ease-in-out;
                     padding: 2px 5px;
                     z-index: -1;
