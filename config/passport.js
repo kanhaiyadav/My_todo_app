@@ -5,7 +5,7 @@ const User = require("../model/users_model.js");
 
 //telling passport to use passport-local strategy for authentication
 passport.use(new LocalStrategy({
-    //which field in the user's document should be used a s the username
+    //which field in the user's document should be used as the username
     usernameField: 'email'
 },
 //find the user who is making the request and establish the indentity

@@ -124,132 +124,129 @@ body {
     padding: 20px;
     overflow: scroll;
     background-color: rgba(200, 200, 200, 0.662);
-    box-shadow: 0px 0px 2px 2px rgba(200, 200, 200, 0.662);
-    display: grid;
-    grid-template-rows: 0.45fr 0.55fr; }
+    box-shadow: 0px 0px 2px 2px rgba(200, 200, 200, 0.662); }
     body main::-webkit-scrollbar {
       display: none; }
-    body main div {
-      display: grid; }
-      body main div p[id="new-task-button"] {
-        position: relative;
-        font-family: "Poppins", sans-serif;
-        font-size: 1.43rem;
-        padding: 4px 15px;
-        margin-bottom: 20px;
-        background-color: ghostwhite;
-        color: #EE7214;
-        border: 2px solid #EE7214;
-        border-radius: 10px;
-        width: 11%; }
-        body main div p[id="new-task-button"]::after {
-          content: "Create a new task";
-          position: absolute;
-          top: 0px;
-          left: 110%;
-          width: 155px;
-          font-size: 1.04rem;
-          color: ghostwhite;
-          background-color: #464646;
-          padding: 7px 10px;
-          border-radius: 3px;
-          display: none; }
-        body main div p[id="new-task-button"]::before {
-          content: "";
-          position: absolute;
-          background-color: #464646;
-          width: 12px;
-          height: 12px;
-          margin: 10px 0px;
-          transform: rotateZ(45deg);
-          left: 106%;
-          display: none; }
-        body main div p[id="new-task-button"]:hover::before, body main div p[id="new-task-button"]:hover::after {
-          display: block; }
-      body main div form {
-        text-align: center;
+    body main div p[id="new-task-button"] {
+      position: relative;
+      font-family: "Poppins", sans-serif;
+      font-size: 1.43rem;
+      padding: 4px 15px;
+      margin-bottom: 20px;
+      background-color: ghostwhite;
+      color: #EE7214;
+      border: 2px solid #EE7214;
+      border-radius: 10px;
+      width: 11%;
+      cursor: pointer; }
+      body main div p[id="new-task-button"]::after {
+        content: "Create a new task";
+        position: absolute;
+        top: 0px;
+        left: 110%;
+        width: 155px;
+        font-size: 1.04rem;
+        color: ghostwhite;
+        background-color: #464646;
+        padding: 7px 10px;
+        border-radius: 3px;
         display: none; }
-        body main div form div {
-          position: relative;
-          padding: 20px;
-          border-radius: 15px;
-          background-color: #fff78a63;
-          display: grid;
-          grid-template-rows: 0.5fr 0.5fr;
-          grid-template-columns: 0.5fr 0.5fr;
-          row-gap: 9%;
-          column-gap: 4%;
-          width: 95%; }
-          body main div form div textarea,
-          body main div form div input {
-            padding: 10px;
-            font-size: 1.4989rem;
-            display: block;
-            outline: none;
-            border: none;
-            background: transparent;
-            border-radius: 10px;
-            border-bottom: 2px solid #EE7214; }
-          body main div form div textarea {
-            grid-row: 1/2;
-            grid-column: 1/3; }
-          body main div form div input[type="text"] {
-            position: relative;
-            grid-row: 2/3;
-            grid-column: 1/2; }
-          body main div form div img {
-            align-self: center;
-            grid-row: 2/3;
-            grid-column: 1/2;
-            position: absolute;
-            right: 10px;
-            width: 45px;
-            transition: all 0.3s ease-in-out; }
-          body main div form div ul {
-            grid-row: 2/3;
-            grid-column: 1/2;
-            list-style: none;
-            position: absolute;
-            background-color: ghostwhite;
-            color: #EE7214;
-            font-size: 1.4989rem;
-            right: 10px;
-            border-radius: 10px;
-            padding: 0px;
-            overflow: hidden;
-            z-index: 99;
-            transition: all 0.3s ease-in-out;
-            overflow: scroll; }
-            body main div form div ul::-webkit-scrollbar {
-              display: none; }
-            body main div form div ul#update-list {
-              top: 100px;
-              transition: none;
-              max-height: 33vh;
-              display: none; }
-            body main div form div ul li {
-              padding: 7px 10px;
-              margin: 14px 10px;
-              border-radius: 10px; }
-              body main div form div ul li:hover {
-                background-color: #EE7214;
-                color: ghostwhite; }
-          body main div form div input[type="date"] {
-            grid-row: 2/3;
-            grid-column: 2/3; }
-        body main div form button {
-          font-size: 1.5rem;
+      body main div p[id="new-task-button"]::before {
+        content: "";
+        position: absolute;
+        background-color: #464646;
+        width: 12px;
+        height: 12px;
+        margin: 10px 0px;
+        transform: rotateZ(45deg);
+        left: 106%;
+        display: none; }
+      body main div p[id="new-task-button"]:hover::before, body main div p[id="new-task-button"]:hover::after {
+        display: block; }
+    body main div form {
+      text-align: center;
+      display: none; }
+      body main div form div {
+        position: relative;
+        padding: 20px;
+        border-radius: 15px;
+        background-color: #fff78a63;
+        display: grid;
+        grid-template-rows: 0.5fr 0.5fr;
+        grid-template-columns: 0.5fr 0.5fr;
+        row-gap: 9%;
+        column-gap: 4%;
+        width: 95%; }
+        body main div form div textarea,
+        body main div form div input {
           padding: 10px;
-          margin: 20px;
-          border-radius: 15px;
-          cursor: pointer;
-          background: linear-gradient(white, #EE7214);
+          font-size: 1.4989rem;
+          display: block;
           outline: none;
           border: none;
-          box-sizing: border-box;
-          box-shadow: 0px 3px 8px 2px rgba(119, 119, 119, 0.629); }
-          body main div form button span {
-            padding: 10px; }
+          background: transparent;
+          border-radius: 10px;
+          border-bottom: 2px solid #EE7214; }
+        body main div form div textarea {
+          grid-row: 1/2;
+          grid-column: 1/3; }
+        body main div form div input[type="text"] {
+          position: relative;
+          grid-row: 2/3;
+          grid-column: 1/2; }
+        body main div form div img {
+          align-self: center;
+          grid-row: 2/3;
+          grid-column: 1/2;
+          position: absolute;
+          right: 10px;
+          width: 45px;
+          transition: all 0.3s ease-in-out; }
+        body main div form div ul {
+          grid-row: 2/3;
+          grid-column: 1/2;
+          list-style: none;
+          position: absolute;
+          background-color: ghostwhite;
+          color: #EE7214;
+          font-size: 1.4989rem;
+          right: 10px;
+          border-radius: 10px;
+          padding: 0px;
+          overflow: hidden;
+          z-index: 99;
+          transition: all 0.3s ease-in-out;
+          overflow: scroll; }
+          body main div form div ul::-webkit-scrollbar {
+            display: none; }
+          body main div form div ul#update-list {
+            top: 100px;
+            transition: none;
+            max-height: 33vh;
+            display: none; }
+          body main div form div ul li {
+            padding: 7px 10px;
+            margin: 14px 10px;
+            border-radius: 10px; }
+            body main div form div ul li:hover {
+              background-color: #EE7214;
+              color: ghostwhite; }
+        body main div form div input[type="date"] {
+          grid-row: 2/3;
+          grid-column: 2/3; }
+      body main div form button {
+        font-size: 1.5rem;
+        padding: 10px;
+        margin: 20px;
+        border-radius: 15px;
+        cursor: pointer;
+        background: linear-gradient(white, #EE7214);
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+        box-shadow: 0px 3px 8px 2px rgba(119, 119, 119, 0.629); }
+        body main div form button span {
+          padding: 10px; }
     body main > p {
       font-size: 1.43rem;
       padding: 5px;
@@ -264,51 +261,57 @@ body {
       overflow: scroll; }
       body main div[id="task-container"]::-webkit-scrollbar {
         display: none; }
-      body main div[id="task-container"] div[class="task"] {
-        position: relative;
-        width: 91.5%;
+      body main div[id="task-container"] div.task {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 0.06fr 0.74fr 0.2fr;
         border-radius: 15px;
         margin: 5px 0px;
         background-color: #fff78a63;
-        padding: 10px 40px; }
-        body main div[id="task-container"] div[class="task"]:hover {
-          border: 2px solid #EE7214; }
-        body main div[id="task-container"] div[class="task"] i[class="fa-solid fa-trash-can"] {
+        padding: 5px 10px;
+        border: 2px solid #fff78a63; }
+        body main div[id="task-container"] div.task:hover {
+          border-color: #EE7214; }
+        body main div[id="task-container"] div.task:active p.task-description {
+          white-space: normal; }
+        body main div[id="task-container"] div.task i[class="fa-solid fa-trash-can"] {
           color: black;
-          position: absolute;
-          left: 10px;
-          top: 18px;
           padding: 10px;
           font-size: 1.3rem;
           border-radius: 50%; }
-          body main div[id="task-container"] div[class="task"] i[class="fa-solid fa-trash-can"]:hover {
+          body main div[id="task-container"] div.task i[class="fa-solid fa-trash-can"]:hover {
             color: #EE7214;
             background-color: white;
             box-shadow: 0px 0px 8px 5px #f9954a; }
-        body main div[id="task-container"] div[class="task"] p {
-          font-size: 1.5rem;
-          margin-left: 20px; }
-          body main div[id="task-container"] div[class="task"] p span[class="task-description"] {
-            margin: 0px; }
-          body main div[id="task-container"] div[class="task"] p a[class="edit-link"] {
-            margin: 0px 20px; }
-          body main div[id="task-container"] div[class="task"] p span[class="label"] {
+        body main div[id="task-container"] div.task div {
+          font-size: 1.5rem; }
+          body main div[id="task-container"] div.task div div.description {
+            display: grid;
+            grid-template-columns: 0.95fr 0.05fr; }
+            body main div[id="task-container"] div.task div div.description p.task-description {
+              position: relative;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis; }
+              body main div[id="task-container"] div.task div div.description p.task-description:hover {
+                white-space: normal; }
+          body main div[id="task-container"] div.task div i {
             font-size: 1.3rem;
             color: #EE7214;
-            position: absolute;
-            background-color: ghostwhite;
-            padding: 10px;
-            align-self: center;
-            top: 20%;
-            right: 30px;
-            border-radius: 20px; }
-          body main div[id="task-container"] div[class="task"] p span[class="date"] {
+            margin-right: 20px; }
+          body main div[id="task-container"] div.task div span.date {
             font-size: 1.04rem;
-            color: #5a5a5a;
-            padding: 0px 10px; }
-          body main div[id="task-container"] div[class="task"] p i {
-            font-size: 1.3rem;
-            color: #EE7214; }
+            color: #5a5a5a; }
+        body main div[id="task-container"] div.task p.label {
+          text-align: center;
+          font-size: 1.3rem;
+          color: #EE7214;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          background-color: ghostwhite;
+          padding: 10px;
+          border-radius: 20px; }
   body .btn:active {
     animation: button 0.2s linear 0s 1; }
 
