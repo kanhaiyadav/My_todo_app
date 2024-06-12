@@ -12,16 +12,11 @@ body {
         top: 10px;
         width: 98%;
         margin: auto;
-        position: relative;
         padding: $base-padding;
         @include center(row);
-        &::before {
-            @include full_before();
-            background-color: rgba(205, 205, 205, 0.6);
-            filter: blur(1px);
-            border-radius: $base-border-radius * 2.5;
-            border: 2px solid white;
-        }
+        background-color: rgba(200, 200, 200, 0.662);
+        border: 2px solid white;
+        border-radius: $base-border-radius * 2.5;
         div {
             position: relative;
             padding: 2px $base-padding;

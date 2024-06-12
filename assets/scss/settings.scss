@@ -1,11 +1,11 @@
 @keyframes button {
-    0%{
+    0% {
         transform: scale(1);
     }
-    50%{
+    50% {
         transform: scale(0.9);
     }
-    100%{
+    100% {
         transform: scale(1);
     }
 }
@@ -14,8 +14,29 @@
 * {
     margin: 0px;
 }
+
+@media screen and (max-width: 1020px) {
+    section#nav p>span,
+    section#nav h1 {
+        display: none;
+    }
+    section#nav{
+        width: 60px !important;
+        text-align: center;
+    }
+
+    section#content{
+        flex-grow: 1;
+    }
+
+    body{
+        padding:0px 20px;
+        gap:30px;
+    }
+}
 body {
     height: 100vh;
+    overflow: hidden;
     background-image: url(../images/b5.jpg);
     background-size: cover;
     backdrop-filter: blur(5px);
@@ -29,8 +50,8 @@ body {
     section {
         height: 90%;
         width: 90%;
-        background-color: rgba(200, 200, 200, 0.429);
-        box-shadow: 0px 0px 5px 3px rgba(200, 200, 200, 0.429);
+        background-color: rgba(200, 200, 200, 0.662);
+        box-shadow: 0px 0px 2px 2px rgba(200, 200, 200, 0.662);
         border-radius: $base-border-radius;
         display: flex;
         flex-direction: column;
@@ -38,22 +59,32 @@ body {
         align-items: flex-start;
 
         &#nav {
-            width: 20%;
+            width: 265px;
             position: relative;
-            >a{
-                position: absolute;
-                top: 0px;
-                left: 15px;
-                font-size: $base-font-size*1.2;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap:10px;
+            > a {
+                font-size: $base-font-size * 1.2;
                 text-decoration: none;
                 background-color: ghostwhite;
-                padding: $base-padding*0.5 $base-padding;   
+                padding: $base-padding * 0.5 $base-padding;
                 border-radius: 50%;
                 color: $base-style-color;
             }
+
+            p{
+                i{
+                    padding:0px $base-padding;
+                }
+            }
         }
-        &#content {
+        &#content {            
             width: 70%;
+            min-width: 620px;
             box-sizing: border-box;
             padding: $base-padding * 2;
             div[id="profile"] {
@@ -112,7 +143,8 @@ body {
                 margin: $base-margin 0px;
                 padding: $base-padding * 2 $base-padding;
                 border-radius: $base-border-radius;
-                display: none;
+                transition: 0.1s linear;
+                transform-origin: top;
                 label[for="name"] {
                     font-size: $base-font-size * 0.9;
                     margin: 0px 5px;
@@ -165,7 +197,7 @@ body {
                     font-size: $base-font-size;
                     border-radius: $base-border-radius;
                     margin: $base-td-margin 0px;
-                    &:hover{
+                    &:hover {
                         background-color: $base-hover-color;
                     }
                 }
@@ -198,6 +230,10 @@ body {
     }
 }
 
-.btn:active{
+.btn:active {
     animation: button 0.3s linear 0s 1;
+}
+
+.expand{
+    transform: scaleY(0);
 }

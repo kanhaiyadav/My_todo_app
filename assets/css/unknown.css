@@ -10,23 +10,13 @@ body {
     top: 10px;
     width: 98%;
     margin: auto;
-    position: relative;
     padding: 10px;
     display: flex;
     align-items: center;
-    flex-direction: row; }
-    body nav::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      z-index: -1;
-      background-color: rgba(205, 205, 205, 0.6);
-      filter: blur(1px);
-      border-radius: 25px;
-      border: 2px solid white; }
+    flex-direction: row;
+    background-color: rgba(200, 200, 200, 0.662);
+    border: 2px solid white;
+    border-radius: 25px; }
     body nav div {
       position: relative;
       padding: 2px 10px;

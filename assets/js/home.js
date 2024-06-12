@@ -4,10 +4,18 @@ let li = document.querySelectorAll(".list li");
 let createTaskForm = document.querySelector('form[id="add-task"]');
 let updateForm = document.querySelector('form[id="update-task"]');
 let input = document.querySelector('input[type="text"]');
+let des_input = document.querySelector('textarea[name="description"]');
 let task = document.querySelectorAll(".task");
 let nav = document.querySelector("body nav");
 let deg = 0;
 let main = '#EE7214'
+let task_container = document.querySelector('#task-container');
+taskcount = 0;
+if (task_container.innerHTML == '\n            \n                \n                        \n                ') {
+    task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
+}
+
+
 
 let curr_id = null;
 function showOrHideDropdown() {
@@ -22,7 +30,7 @@ let edit_link_handler = (event) => {
     $("#add-task").slideUp(300);
     curr_id = $(event.target).parent().data('id');
     console.log(curr_id);
-    let mydate = new Date(document.querySelector(`#task-${curr_id} span.date`).innerText);
+    let mydate = new Date(document.querySelector(`#task-${curr_id} p.date`).innerText);
     console.log(mydate);
     const formattedDate = mydate.toISOString().substring(0, 10);
     console.log(formattedDate);
@@ -39,7 +47,10 @@ let update_form_toggle = () => {
 }
 
 arrow.addEventListener('click', showOrHideDropdown);
-input.addEventListener('click', showOrHideDropdown);
+input.addEventListener('click', () => {
+    input.blur();
+    showOrHideDropdown();
+});
 
 $("#arrow2").click(() => {
     $("#update-list").slideToggle(400);
@@ -87,6 +98,12 @@ $(".delete-link").click(function (event) {
                 text: data.message
             }).show();
             $(`#task-${data.data.task_id}`).remove();
+            taskcount = taskcount - 1;
+            console.log(taskcount, "hello");
+            if (taskcount <= 0)
+                task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
+            else
+                task_container.style.backgroundImage = 'none';
         },
         error: function (err) {
             new Noty({
@@ -117,6 +134,12 @@ let delete_task = (delete_link) => {
                 }).show();
                 console.log(data);
                 $(`#task-${data.data.task_id}`).remove();
+                taskcount = taskcount - 1;
+                console.log(taskcount, "hello");
+                if (taskcount <= 0)
+                    task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
+                else
+                    task_container.style.backgroundImage = 'none';
             },
             error: function (err) {
                 new Noty({
@@ -142,7 +165,7 @@ let create_task = () => {
             success: function (data) {
                 new Noty({
                     theme: 'relax',
-                    timeout:2000,
+                    timeout: 2000,
                     type: 'success',
                     layout: 'topCenter',
                     text: data.message
@@ -153,6 +176,8 @@ let create_task = () => {
                 $(".edit-link").parent().click(edit_link_handler);
                 createTaskForm.reset();
                 create_form_toggle();
+                taskcount = taskcount + 1;
+                task_container.style.backgroundImage = 'none';
             },
             error: function (err) {
                 new Noty({
@@ -170,11 +195,11 @@ let create_task = () => {
 
 let newTask = (task) => {
     return $(`<div id="task-${task._id}" class="task">
-                    <a class="delete-link" href="/task/delete/${task._id}">
-                        <i class="fa-solid fa-trash-can"></i>
-                    </a>
-                    <div>
-                        <div class="description">
+                        <a class="delete-link" href="/task/delete/${task._id}">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                        <div>
+                            <div class="description">
                                 <p class="task-description">
                                     ${task.description}
                                 </p>
@@ -184,17 +209,17 @@ let newTask = (task) => {
                                     </a>
                                 </span>
                             </div>
-                        <p>
-                            <i class="fa-solid fa-calendar-days"></i>
-                            <span class="date">
-                                ${new Date(task.date)}
-                            </span>
+                            <div>
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <p class="date">
+                                    ${new Date(task.date)}
+                                </p>
+                            </div>
+                        </div>
+                        <p class="label">
+                            ${task.category}
                         </p>
-                    </div>
-                    <p class="label">
-                        ${task.category}
-                    </p>
-                </div>`
+                    </div>`
     )
 }
 
@@ -203,6 +228,9 @@ create_task();
 $("#new-task-button").click(() => {
     create_form_toggle();
     $("#update-task").slideUp(300);
+    setTimeout(() => {
+        des_input.focus();
+    }, 300)
 });
 $("#add-task button.cancel").click(create_form_toggle);
 $("#add-task button.reset").click(() => {
@@ -240,7 +268,7 @@ $("#update-task").submit(function (event) {
             console.log(document.querySelector(`#task-${data.data.task._id} p.task-description`));
             document.querySelector(`#task-${data.data.task._id} p.task-description`).innerText = data.data.task.description;
             document.querySelector(`#task-${data.data.task._id} p.label`).innerText = data.data.task.category;
-            document.querySelector(`#task-${data.data.task._id} span.date`).innerText = new Date(data.data.task.date);
+            document.querySelector(`#task-${data.data.task._id} p.date`).innerText = new Date(data.data.task.date);
             updateForm.reset();
             update_form_toggle();
         },

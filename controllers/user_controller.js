@@ -4,8 +4,7 @@ const path = require('path');
 const fs = require("fs");
 
 module.exports.signin = (req, res) => {
-    if (!req.isAuthenticated())
-    {
+    if (!req.isAuthenticated()) {
         return res.render('user-signin');
     }
     else
@@ -22,11 +21,10 @@ module.exports.signup = (req, res) => {
 module.exports.logout = (req, res) => {
     req.logout((err) => {
         if (err) console.log(err);
-        else
-        {
+        else {
             req.flash("success", "Logged out successfully");
             return res.redirect("/");
-            }
+        }
     });
 }
 
@@ -58,7 +56,7 @@ module.exports.create = async function (req, res) {
         if (!user) {
             try {
                 user = await User.create(req.body);
-                user.avatar = User.avatarPath + '/' + "user (2).png";
+                user.avatar = "../images/user.jpg";
                 await user.save();
                 req.flash('success', 'User created successfully!');
                 return res.redirect('/user/signin');
@@ -84,26 +82,21 @@ module.exports.update = async (req, res) => {
             if (await this.isFileExists(req, res)) {
                 fs.unlinkSync(path.join(__dirname, "..", user.avatar));
             }
-            console.log(user.avatar);
             user.avatar = User.avatarPath + '/' + req.file.filename;
-            console.log(user.avatar);
-            console.log(req.user);
             await user.save();
         }
         else {
             console.log("File does not exist");
         }
         await User.findByIdAndUpdate(req.user._id, req.body);
-        if (req.xhr) {
-            return res.status(200).json({
-                data: {
-                    src: user.avatar,
-                    name: req.body.name
-                },
-                message: "updated successfully"
-            });
-        }
-        return res.redirect("back");
+        res.locals.user = await User.findById(req.user._id);
+        return res.status(200).json({
+            data: {
+                src: user.avatar,
+                name: req.body.name
+            },
+            message: "updated successfully"
+        });
     } catch (err) {
         console.error(err);
     }

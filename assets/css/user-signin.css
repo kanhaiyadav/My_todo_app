@@ -48,6 +48,9 @@ body {
           font-size: 1.3rem;
           border: none;
           width: 90%; }
+        body main form div input:-webkit-autofill,
+        body main form div input:-webkit-autofill:focus {
+          transition: background-color 0s 600000s, color 0s 600000s !important; }
       body main form button {
         padding: 10px;
         border: none;
