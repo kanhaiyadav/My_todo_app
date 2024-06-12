@@ -9,8 +9,22 @@
 * {
   margin: 0px; }
 
+@media screen and (max-width: 1020px) {
+  section#nav p > span,
+  section#nav h1 {
+    display: none; }
+  section#nav {
+    width: 60px !important;
+    text-align: center; }
+  section#content {
+    flex-grow: 1; }
+  body {
+    padding: 0px 20px;
+    gap: 30px; } }
+
 body {
   height: 100vh;
+  overflow: hidden;
   background-image: url(../images/b5.jpg);
   background-size: cover;
   backdrop-filter: blur(5px);
@@ -24,28 +38,34 @@ body {
   body section {
     height: 90%;
     width: 90%;
-    background-color: rgba(200, 200, 200, 0.429);
-    box-shadow: 0px 0px 5px 3px rgba(200, 200, 200, 0.429);
+    background-color: rgba(200, 200, 200, 0.662);
+    box-shadow: 0px 0px 2px 2px rgba(200, 200, 200, 0.662);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start; }
     body section#nav {
-      width: 20%;
-      position: relative; }
+      width: 265px;
+      position: relative;
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px; }
       body section#nav > a {
-        position: absolute;
-        top: 0px;
-        left: 15px;
         font-size: 1.56rem;
         text-decoration: none;
         background-color: ghostwhite;
         padding: 5px 10px;
         border-radius: 50%;
         color: #EE7214; }
+      body section#nav p i {
+        padding: 0px 10px; }
     body section#content {
       width: 70%;
+      min-width: 620px;
       box-sizing: border-box;
       padding: 20px; }
       body section#content div[id="profile"] {
@@ -96,7 +116,8 @@ body {
         margin: 20px 0px;
         padding: 20px 10px;
         border-radius: 10px;
-        display: none; }
+        transition: 0.1s linear;
+        transform-origin: top; }
         body section#content form label[for="name"] {
           font-size: 1.17rem;
           margin: 0px 5px;
@@ -166,3 +187,6 @@ body {
 
 .btn:active {
   animation: button 0.3s linear 0s 1; }
+
+.expand {
+  transform: scaleY(0); }

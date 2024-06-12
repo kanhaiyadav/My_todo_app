@@ -4,9 +4,16 @@ const preview = document.querySelector("label[for='upload'] img");
 const submit_btn = document.querySelector('#update-form button[type="submit"]');
 const img = document.querySelector("#profile img");
 const user_name = document.getElementById('name');
-
+const update_form = document.querySelector('#update-form');
+const edit_btn = document.getElementById('edit-button');
+const cancel_btn = document.getElementById('cancel');
 console.log(submit_btn);
 
+
+let tollgleUpdateForm = () => {
+    // event.preventDefault();
+    update_form.classList.toggle('expand');
+}
 // Add an event listener to the file input to handle file selection
 fileInput.addEventListener('change', function () {
     // Check if any file is selected
@@ -37,35 +44,25 @@ fileInput.addEventListener('change', function () {
 });
 
 
-$("#update-form").submit(function (event) {
+update_form.addEventListener('submit', async function (event) {
     event.preventDefault();
+    console.log(new FormData(this));
     let url = "/user/update";
-    $.ajax({
+    let responce = await fetch(url, {
         url: url,
-        type: "POST",
-        data: new FormData(this),
-        processData: false,
-        contentType: false,
-        success: (data) => {
-            console.log(data);
-            img.src = data.data.src;
-            user_name.innerText = data.data.name;
-            console.log(data.data.src);
-            $("#update-form")[0].reset();
-            $("#update-form").slideToggle(500);
-        },
-        error: (error) => {
-            console.log(error.responseText);
-        },
-    })
+        method: "POST",
+        body: new FormData(this),
+    });
+    if (responce.ok) {
+        responce = await responce.json();
+        console.log(responce);
+        img.src = responce.data.src;
+        user_name.innerText = responce.data.name;
+        tollgleUpdateForm();
+    }
+    else {
+        console.log(error.responseText);
+    }
 })
-
-$("#edit-button").click(function (event) {
-    event.preventDefault();
-    $("#update-form").slideToggle(500);
-})
-
-$("#cancel").click(function (event) {
-    event.preventDefault();
-    $("#update-form").slideToggle(500);
-})
+edit_btn.addEventListener('click', tollgleUpdateForm);
+cancel_btn.addEventListener('click', tollgleUpdateForm);
