@@ -1,5 +1,8 @@
 const Task = require('../model/task_model.js');
 const User = require('../model/users_model.js');
+const taskMailer = require("../mailers/tasks-mailer.js");
+const queue = require('../config/kue');
+const taskEmailWorker = require('../workers/task_email_worker.js');
 
 
 module.exports.create = async (req, res) => {
@@ -11,8 +14,17 @@ module.exports.create = async (req, res) => {
             date: req.body.date,
             user: req.user._id
         });
+        await task.populate('user');
         await user.tasks.push(task);
         await user.save();
+        // taskMailer.newTask(task);
+        let job = queue.create('emails', task).save(function (err) {
+            if (err) {
+                console.log("error in sending to the queue", err);
+                return;
+            }
+            console.log("job enqueued", job.id);
+        })
         if (req.xhr) {
             return res.status(200).json({
                 data: {

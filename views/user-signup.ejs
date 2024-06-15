@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
         integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="../css/user-signup.css">
+    <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/user-signin.css">
 </head>
+
 <body>
     <main>
         <form id="signup-form" action="/user/create_user" method="post">
@@ -25,6 +28,7 @@
             <div class="container">
                 <input class="inp" id="password" type="password" name="password" required>
                 <label class="label" for="password">Enter the password</label>
+                <i class="fa-regular fa-eye-slash"></i>
             </div>
 
             <div class="container">
@@ -35,12 +39,13 @@
             <a href="/"><button class="btn" type="button">back</button></a>
             <button form="signup-form" class="btn" type="submit">sign up</button>
         </form>
-        <script type="text/javascript" src="../js/user-signup.js"></script>
     </main>
+    <div id="google"><a href="/user/auth/google"><img src="../images/search.png" alt=""><span>Sign in/Sign up with
+                Google</span></a></div>
 
     <a id="signin" href="/user/signin">already have an account? sign in</a>
     <script>
-                    <% if (flash.success && flash.success.length > 0) {%>
+        <% if (flash.success && flash.success.length > 0) {%>
             new Noty({
                 theme: 'relax',
                 type: 'success',
@@ -53,7 +58,7 @@
                 }
 
             }).show();
-                    <% } else if (flash.error && flash.error.length > 0) {%>
+            <% } else if (flash.error && flash.error.length > 0) {%>
             new Noty({
                 theme: 'relax',
                 type: 'error',
@@ -66,7 +71,9 @@
                 }
 
             }).show();
-                    <% } %>
+                <% } %>
     </script>
+    <script type="text/javascript" src="../js/user-signin.js"></script>
 </body>
+
 </html>

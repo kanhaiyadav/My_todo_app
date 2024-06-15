@@ -81,8 +81,27 @@ body {
                         background-color 0s 600000s,
                         color 0s 600000s !important;
                 }
+                i{
+                    font-size: 1.3rem;
+                    position: absolute;
+                    right: 10px;
+                    top:34%;
+                }
             }
-
+            a#forgot-password{
+                position: relative;
+                right: -10px;
+                top: -12px;
+                display: block;
+                margin: 0px 0px 20px 0px;
+                color: $base-style-color;
+                &:hover{
+                    color: red;
+                }
+                &:active{
+                    color: white;
+                }
+            }
             button {
                 padding: $base-padding;
                 border: none;
@@ -92,8 +111,11 @@ body {
                 font-size: $base-font-size;
 
                 &:hover {
-                    border: 1px solid black;
-                    color: white;
+                    box-shadow: 2px 2px 5px 2px rgba(85, 85, 85, 0.2);
+                }
+
+                &:active {
+                    transform: scale(0.97);
                 }
             }
 
@@ -104,9 +126,35 @@ body {
             }
         }
     }
+    div#google {
+        margin: 20px 0px;
+        background-color: white;
+        width: 320px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        a {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            text-decoration: none;
+            padding: $base-padding 0px;
+            img {
+                width: 25px;
+                height: 25px;
+            }
+            span {
+                color: black;
+            }
+        }
+    }
     a[id="signup"] {
         position: relative;
         color: white;
         bottom: -50px;
     }
+}
+div#google:hover {
+    transform: scale(0.98);
 }

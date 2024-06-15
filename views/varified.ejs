@@ -12,30 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
         integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/user-signin.css">
 </head>
 
 <body>
-    <main>
-        <form id="signin-form" action="/user/authorize" method="post">
-            <div class="container">
-                <label for="name">Enter you user name:</label>
-                <input id="user-name" type="text" name="email" required>
-            </div>
-            <div class="container">
-                <label for="password">Enter the password:</label>
-                <input id="password" type="password" name="password" required>
-                <i class="fa-regular fa-eye-slash"></i>
-            </div>
-            <a id="forgot-password" href="/user/forgot-password" target="_blank">forgot password?</a>
-            <button form="signin-form" type="submit">sign in</button>
-            <a href="/"><button type="button">back</button></a>
-        </form>
-    </main>
-    <div id="google"><a href="/user/auth/google"><img src="../images/search.png" alt=""><span>Sign in/Sign up with
-                Google</span></a></div>
-    <a id="signup" href="/user/signup">dont have an account? sign up</a>
+    <h1>hello <%=user.name %></h1>
+    <h2>We have sent a reset password link to <%=user.email %></h2>
+    <h2>find the email and login</h2>
+    
     <script>
                     <% if (flash.success && flash.success.length > 0) {%>
             new Noty({
@@ -65,7 +48,6 @@
             }).show();
                     <% } %>
     </script>
-    <script type="text/javascript" src="../js/user-signin.js"></script>
 </body>
 
 </html>

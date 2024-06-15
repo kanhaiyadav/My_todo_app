@@ -1,6 +1,8 @@
 const label = document.querySelectorAll("label");
 const input = document.querySelectorAll("input");
 const container = document.querySelectorAll(".container");
+const eyes = document.querySelectorAll("i.fa-eye-slash");
+const passInput = document.querySelectorAll("input[type='password']");
 
 document.addEventListener("DOMContentLoaded", () => {
   input[0].focus();
@@ -24,4 +26,18 @@ for (let i = 0; i < input.length; i++) {
       container[i].style.background = "transparent";
     }
   });
+}
+
+for (let i = 0; i < eyes.length; i++){
+    eyes[i].addEventListener("click", () => {
+        if (eyes[i].classList.contains("fa-eye-slash")){
+            eyes[i].classList.remove("fa-eye-slash");
+            eyes[i].classList.add("fa-eye");
+            passInput[i].type = "text";
+        }else{
+            eyes[i].classList.remove("fa-eye");
+            eyes[i].classList.add("fa-eye-slash");
+            passInput[i].type = "password";
+        }
+    })
 }

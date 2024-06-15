@@ -51,6 +51,22 @@ body {
         body main form div input:-webkit-autofill,
         body main form div input:-webkit-autofill:focus {
           transition: background-color 0s 600000s, color 0s 600000s !important; }
+        body main form div i {
+          font-size: 1.3rem;
+          position: absolute;
+          right: 10px;
+          top: 34%; }
+      body main form a#forgot-password {
+        position: relative;
+        right: -10px;
+        top: -12px;
+        display: block;
+        margin: 0px 0px 20px 0px;
+        color: #EE7214; }
+        body main form a#forgot-password:hover {
+          color: red; }
+        body main form a#forgot-password:active {
+          color: white; }
       body main form button {
         padding: 10px;
         border: none;
@@ -59,13 +75,36 @@ body {
         background: linear-gradient(white, #EE7214);
         font-size: 1.3rem; }
         body main form button:hover {
-          border: 1px solid black;
-          color: white; }
+          box-shadow: 2px 2px 5px 2px rgba(85, 85, 85, 0.2); }
+        body main form button:active {
+          transform: scale(0.97); }
       body main form button[form] {
         position: absolute;
         bottom: 0;
         right: 0; }
+  body div#google {
+    margin: 20px 0px;
+    background-color: white;
+    width: 320px;
+    border-radius: 5px;
+    box-sizing: border-box; }
+    body div#google a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      text-decoration: none;
+      padding: 10px 0px; }
+      body div#google a img {
+        width: 25px;
+        height: 25px; }
+      body div#google a span {
+        color: black; }
   body a[id="signup"] {
     position: relative;
     color: white;
     bottom: -50px; }
+
+div#google:hover {
+  transform: scale(0.98); }

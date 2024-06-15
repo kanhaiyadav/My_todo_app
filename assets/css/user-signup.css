@@ -62,7 +62,29 @@ body {
         position: absolute;
         bottom: 0;
         right: 0; }
+  body div#google {
+    margin: 20px 0px;
+    background-color: white;
+    width: 320px;
+    border-radius: 5px;
+    box-sizing: border-box; }
+    body div#google a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      text-decoration: none;
+      padding: 10px 0px; }
+      body div#google a img {
+        width: 25px;
+        height: 25px; }
+      body div#google a span {
+        color: black; }
   body a[id="signin"] {
     position: relative;
     color: white;
     bottom: -50px; }
+
+div#google:hover {
+  transform: scale(0.98); }

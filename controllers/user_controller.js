@@ -1,5 +1,9 @@
 const User = require('../model/users_model.js');
 const Task = require('../model/task_model.js');
+const ForgotUser = require('../model/forgot_user_model.js');
+const queue = require('../config/kue.js');
+const passwordMailerWorker = require('../workers/password-email-worker.js');
+const crypto = require('crypto');
 const path = require('path');
 const fs = require("fs");
 
@@ -105,4 +109,96 @@ module.exports.update = async (req, res) => {
 module.exports.authorize = (req, res) => {
     req.flash("success", "Logged in successfully");
     res.redirect('/home');
+}
+
+module.exports.forgotPassword = (req, res) => {
+    return res.render('forgot-password');
+}
+
+module.exports.indentify = async (req, res) => {
+    try {
+        let user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            req.flash("error", "User does not exist!");
+            return res.redirect("back");
+        }
+        else {
+            req.flash("success", "User verified successfully!");
+            let forgotUser = await ForgotUser.findOne({ email: req.body.email });
+            if (!forgotUser) {
+                forgotUser = await ForgotUser.create({
+                    email: req.body.email,
+                    token: crypto.randomBytes(20).toString('hex'),
+                    valid: true
+                });
+
+            }
+            else {
+                forgotUser.token = crypto.randomBytes(20).toString('hex');
+                forgotUser.valid = true;
+                await forgotUser.save();
+            }
+            console.log("****", forgotUser)
+            let job = queue.create('emails', forgotUser).save(function (err) {
+                if (err) {
+                    console.log("error in sending to the queue", err);
+                    return;
+                }
+                console.log("job enqueued", job.id);
+            })
+
+            return res.redirect('varified/' + user._id);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+module.exports.varified = async (req, res) => {
+    let user = await User.findById(req.params.id);
+    return res.render('varified', {
+        user: user
+    }
+    );
+}
+
+module.exports.resetPassword = async (req, res) => {
+    let forgotUser = await ForgotUser.findOne({ token: req.params.token });
+    console.log(req.params.token);
+    if (!forgotUser) {
+        req.flash("error", "Something went wrong, try again");
+        res.redirect('/user/signin');
+    }
+    else {
+        if (forgotUser.valid) {
+            forgotUser.valid = false;
+            await forgotUser.save();
+            return res.render('reset-password', {
+                token: req.params.token
+            });
+        }
+        return req.flash("error", "Your token has expired, try again");
+    }
+}
+
+module.exports.updatePassword = async (req, res) => {
+    let forgotUser = await ForgotUser.findOne({ token: req.body.token });
+    if (!forgotUser) {
+        req.flash("error", "User not found");
+        res.redirect('/user/signin');
+    }
+    else {
+        let user = await User.findOne({ email: forgotUser.email });
+        if (req.body.password != req.body.confirmPassword) {
+            req.flash("error", "Password does not match");
+            res.redirect('back');
+        }
+        else {
+
+            user.password = req.body.password;
+            await user.save();
+            req.flash("success", "Password changed successfully");
+            res.redirect('/user/signin');
+        }
+    }
 }

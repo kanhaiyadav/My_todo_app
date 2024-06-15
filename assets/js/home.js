@@ -99,7 +99,6 @@ $(".delete-link").click(function (event) {
             }).show();
             $(`#task-${data.data.task_id}`).remove();
             taskcount = taskcount - 1;
-            console.log(taskcount, "hello");
             if (taskcount <= 0)
                 task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
             else
