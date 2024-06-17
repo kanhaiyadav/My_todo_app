@@ -8,11 +8,17 @@ This ToDo List app allows users to keep track of their tasks in an organized man
 
 ## Features
 
+- **Sign-in/Sign-up**: User can sign up using their email address and password.
+- **Social Authentication**: user can sign-in/sign-up using google.
+- **Password Reset**: User can reset their password if they forget their password.
 - **Add Task**: Users can add new tasks to their list by entering task details and clicking the "Add" button.
-- **Mark as Completed**: Users can mark tasks as completed by clicking on the checkbox next to each task.
 - **Delete Task**: Users can delete tasks from the list by clicking the delete button associated with each task.
+- **Update Task**: User can update their task info
 - **View Task List**: Users can view their entire task list, including completed and pending tasks.
 - **Persist Data**: Task data is stored in a MongoDB database, ensuring that tasks are retained even after the user closes the application.
+- **Pop up Notification**: Notifications for signing and signing out.
+- **Proifle Page**: User will have their profile page where they can manage their preferences.
+- **Delayed Job handling**: Kue and Redis database is used for handling Delyed jobs. 
 
 ## Technologies Used
 
@@ -27,7 +33,7 @@ This ToDo List app allows users to keep track of their tasks in an organized man
 
 1. Clone the repository to your local machine.
    ```
-   git clone https://github.com/your-username/todo-list.git
+   git clone https://github.com/kanishy/todo-list.git
    ```
 
 2. Install dependencies.
