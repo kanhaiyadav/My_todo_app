@@ -15,33 +15,31 @@ const accessLogStream = rfs.createStream('access.log', {
     path: logDirectory
 })
 
-const development = {
-    name: 'development',
-    asset_path: '/assets',
-    session_cookie_key: "somethingrandom",
-    db: 'tasks_db',
-    smtp: {
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        port: 587, //indicates we are using TLS
-        secure: false, //true for 465, false for other ports
-        auth: {
-            user: 'kanhaiya.yadav.ds26@heritageit.edu.in',
-            pass: '3SF6uAZP'
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    },
-    google_client_id: "631920121763-a18aj359mgedtf4qlgfrcb1f1c3lrem7.apps.googleusercontent.com",
-    google_client_secret: "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",
-    google_callback_url: "http://localhost:8000/user/auth/google/callback",
-    jwt_secret: "my_todo_app",
-    morgan: {
-        mode: 'dev',
-        options: {stream: accessLogStream}
-    }
-}
+//below is the json object for development commented for now
+// const development = {
+//     name: 'development',
+//     asset_path: '/assets',
+//     session_cookie_key: "somethingrandom",
+//     db: 'tasks_db',
+//     smtp: {
+//         service: 'gmail',
+//         host: 'smtp.gmail.com',
+//         port: 587, //indicates we are using TLS
+//         secure: false, //true for 465, false for other ports
+//         auth: {
+                //i have to remove remove the google_client_id, client_secret and callback_url for safety as i am push it to github
+//         },
+//         tls: {
+//             rejectUnauthorized: false
+//         }
+//     },
+//i have to remove remove the google_client_id, client_secret and callback_url for safety as i am push it to github
+//     jwt_secret: "my_todo_app",
+//     morgan: {
+//         mode: 'dev',
+//         options: {stream: accessLogStream}
+//     }
+// }
 
 const production = {
     name: 'production',
