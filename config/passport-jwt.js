@@ -7,13 +7,13 @@ const JWTStrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
 
 const User = require("../model/users_model.js");
-
+const env = require("./environment.js");
 
 let opts = {
     //extracting the token from the header
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     //the secret or key used to sign the token
-    secretOrKey: "my_todo_app"
+    secretOrKey: env.jwt_secret
 }
 
 //payload contains all the info about the user

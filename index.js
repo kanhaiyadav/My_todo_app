@@ -13,18 +13,23 @@ const sassMiddleware = require('node-sass-middleware');
 const flash = require('connect-flash');
 const path = require('path');
 const customMware = require('./config/middleware.js');
+const env = require('./config/environment.js');
+const logger = require('morgan');
 
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
-    debug: true,
-    outputStyle: 'extended',
-    prefix: '/css'
-}))
+//preventing sass middleware to run every time server start when in production mode
+if (env.name == 'development') {
+    app.use(sassMiddleware({
+        src: path.join(__dirname, env.asset_path, 'scss'),
+        dest: path.join(__dirname, env.asset_path, 'css'),
+        debug: true,
+        outputStyle: 'extended',
+        prefix: '/css'
+    }))
+} 
 
 //Here we are encrypting the user.id that is stored in session cookie.
 app.use(session({
@@ -32,7 +37,7 @@ app.use(session({
 
     //it is a secret key used to encrypt and decrypt the user.id stored in session
     // TODO change the secret before deployment in production mode
-    secret: 'somethingrandom',
+    secret: env.session_cookie_key,
 
     //True: When saveUninitialized is set to true, the session will be saved to the store even if it is new and has not been modified. This can be useful if you need to track visits to your site for statistics or similar purposes, even if the session data is empty.
     //Example: Consider a web application where users can browse content without logging in or performing any actions that modify the session. With saveUninitialized: true, a session would be created and stored for every visitor, even if they don't do anything that requires session data. This can lead to a large number of unnecessary sessions in your store.
@@ -57,8 +62,12 @@ app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(customMware.setFlash);
 
+//setting up logger it takes two arguments first is the mode or the format (which is a function whoose 
+//argument will in the options that we give) and second is the options
+app.use(logger(env.morgan.mode, env.morgan.options));
+
 app.use(cookieParser());
-app.use(express.static('./assets'));
+app.use(express.static('./' + env.asset_path));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
@@ -67,6 +76,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 console.log(__dirname + "/uploads");
 
 app.use('/', require('./routes/index.js'));
+
 
 app.listen(port, function (err) {
     if (err) {
