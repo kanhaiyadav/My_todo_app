@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const path = require('path');
 const fs = require('fs');
 const env = require('./environment.js');
@@ -11,19 +10,5 @@ module.exports = (app) => {
         }
         else
             return JSON.parse(fs.readFileSync(path.join(__dirname,"../public/assets/rev-manifest.json")))[filePath];
-=======
-const fs = require('fs');
-const path = require('path');
-const env = require('./environment');
-const { JsonWebTokenError } = require('jsonwebtoken');
-
-module.exports = (app) => {
-    app.locals.assetPath = function (filePath) {
-        if (env.name == 'development') {
-            return filePath;
-        }
-        else
-            return JSON.parse(fs.readFileSync(path.join(__dirname, '../public/assets/rev-manifest.json')))[filePath];
->>>>>>> main
     }
 }

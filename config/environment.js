@@ -15,6 +15,7 @@ const accessLogStream = rfs.createStream('access.log', {
     path: logDirectory
 })
 
+//note in the developement mode credential might not need to be hidden but i have to hide it here because i am pushing my code to git hub
 const development = {
     name: 'development',
     asset_path: '/assets',
