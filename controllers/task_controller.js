@@ -69,12 +69,14 @@ module.exports.update = async (req, res) => {
 
 module.exports.delete = async (req, res) => {
     try {
-        await User.findByIdAndUpdate(req.user._id, { $pull: { tasks: req.params.id } });
+        const user = await User.findByIdAndUpdate(req.user._id, { $pull: { tasks: req.params.id } });
+        await user.save();
         await Task.findByIdAndDelete(req.params.id);
         if (req.xhr) {
             return res.status(200).json({
                 data: {
-                    task_id: req.params.id
+                    task_id: req.params.id,
+                    task_count: user.tasks.length-1,
                 },
                 message: "Task deleted successfully"
             });

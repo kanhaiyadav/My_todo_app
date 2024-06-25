@@ -10,12 +10,14 @@ let nav = document.querySelector("body nav");
 let deg = 0;
 let main = '#EE7214'
 let task_container = document.querySelector('#task-container');
-taskcount = 0;
-if (task_container.innerHTML == '\n            \n                \n                        \n                ') {
-    task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
+
+console.log(task_container.contains(document.querySelector('.task')));
+if (task_container.contains(document.querySelector('.task'))) {
+    document.getElementById('no-task-img').classList.add('hidden');
 }
-
-
+else {
+    document.getElementById('no-task-img').classList.remove('hidden');
+}
 
 let curr_id = null;
 function showOrHideDropdown() {
@@ -98,11 +100,13 @@ $(".delete-link").click(function (event) {
                 text: data.message
             }).show();
             $(`#task-${data.data.task_id}`).remove();
-            taskcount = taskcount - 1;
-            if (taskcount <= 0)
-                task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
+            console.log(data);
+            if (data.data.task_count <= 0)
+                document.getElementById('no-task-img').classList.remove('hidden');
+
             else
-                task_container.style.backgroundImage = 'none';
+                document.getElementById('no-task-img').classList.add('hidden');
+
         },
         error: function (err) {
             new Noty({
@@ -133,12 +137,11 @@ let delete_task = (delete_link) => {
                 }).show();
                 console.log(data);
                 $(`#task-${data.data.task_id}`).remove();
-                taskcount = taskcount - 1;
-                console.log(taskcount, "hello");
-                if (taskcount <= 0)
-                    task_container.style.backgroundImage = `url(../images/taskbackground.png)`;
+                console.log(data.task_count);
+                if (data.data.task_count <= 0)
+                    document.getElementById('no-task-img').classList.remove('hidden');
                 else
-                    task_container.style.backgroundImage = 'none';
+                    document.getElementById('no-task-img').classList.add('hidden');
             },
             error: function (err) {
                 new Noty({
@@ -175,8 +178,7 @@ let create_task = () => {
                 $(".edit-link").parent().click(edit_link_handler);
                 createTaskForm.reset();
                 create_form_toggle();
-                taskcount = taskcount + 1;
-                task_container.style.backgroundImage = 'none';
+                document.getElementById('no-task-img').classList.add('hidden');
             },
             error: function (err) {
                 new Noty({

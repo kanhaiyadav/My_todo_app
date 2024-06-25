@@ -8,7 +8,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
     <link rel="icon" href="../images/favicon.png">
-    <link rel="stylesheet" href="../css/settings.css">
+    <link rel="stylesheet" href="../css/<%=asset_path('settings.css')%>">
+    <style>
+        body {
+            background-image: url("../<%=asset_path('images/b5.jpg')%>");
+        }
+    </style>
 </head>
 
 <body>
@@ -48,7 +53,7 @@
             <button id="cancel" type="button" class="btn">Cancel</button>
         </form>
     </section>
-    <script type="text/javascript" src="../js/settings.js"></script>
+    <script type="text/javascript" src="../<%=asset_path('js/settings.js')%>"></script>
 </body>
 
 </html>
