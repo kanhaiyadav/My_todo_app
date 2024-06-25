@@ -21,12 +21,8 @@
 }
 
 body {
-    background: {
-        image: url(../images/b5.jpg);
-        size: cover;
-        attachment: fixed;
-    }
-
+    background-size: cover;
+    background-attachment: fixed;
     backdrop-filter: blur(3px);
     min-height: 100vh;
     display: flex;

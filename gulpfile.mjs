@@ -56,7 +56,9 @@ gulp.task('js', function (done) {
 
 gulp.task('image', function (done) {
     console.log("compressing images....");
-    gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')
+    gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)', {
+        encoding: false  //if this option is not set false the image you get will be encoded hence you won't be able to use it in your webpage
+    })
         .pipe(imagemin())
         .pipe(rev())
         .pipe(gulp.dest('./public/assets'))

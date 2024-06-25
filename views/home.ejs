@@ -17,12 +17,17 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/<%=asset_path('home.css')%>">
+    <style>
+        body {
+            background-image: url("../<%=asset_path('images/b5.jpg')%>");
+        }
+    </style>
 </head>
 
 <body>
     <nav>
-        <div><img src="../images/favicon.png" alt=""><span>ToDo</span></div>
+        <div><img src="../<%=asset_path('images/favicon.png')%>" alt=""><span>ToDo</span></div>
         <ul>
             <p>Profile</p>
             <a href="/user/settings">
@@ -64,7 +69,7 @@
                         required autocomplete="off"></textarea>
                     <div>
                         <input type="text" name="category" placeholder="Choose a category..." required autocomplete="off">
-                        <img id="arrow" src="../images/down.png" alt="">
+                        <img id="arrow" src="../<%=asset_path('images/down.png')%>" alt="">
                         <ul class="list">
                             <li>School or College</li>
                             <li>Work</li>
@@ -93,7 +98,7 @@
                         autocomplete="off"></textarea>
                     <div>
                         <input type="text" name="category" placeholder="Choose a category..." required autocomplete="off">
-                        <img id="arrow" src="../images/down.png" alt="">
+                        <img id="arrow" src="../<%=asset_path('images/down.png')%>" alt="">
                         <ul class="list">
                             <li>School or College</li>
                             <li>Work</li>
@@ -181,7 +186,7 @@
             }).show();
                 <% } %>
     </script>
-    <script type="text/javascript" src="../js/home.js"></script>
+    <script type="text/javascript" src="../<%=asset_path('js/home.js') %>"></script>
 
 </body>
 

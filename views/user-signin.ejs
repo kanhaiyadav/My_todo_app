@@ -13,7 +13,12 @@
         integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/482c652b1c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/user-signin.css">
+    <link rel="stylesheet" href="../css/<%=asset_path('user-signin.css')%>">
+    <style>
+        body {
+            background-image: url("../../<%=asset_path('images/b5.jpg')%>");
+        }
+    </style>
 </head>
 
 <body>
@@ -33,7 +38,7 @@
             <a href="/"><button type="button">back</button></a>
         </form>
     </main>
-    <div id="google"><a href="/user/auth/google"><img src="../images/search.png" alt=""><span>Sign in/Sign up with
+    <div id="google"><a href="/user/auth/google"><img src="../<%=asset_path('images/search.png')%>" alt=""><span>Sign in/Sign up with
                 Google</span></a></div>
     <a id="signup" href="/user/signup">dont have an account? sign up</a>
     <script>
@@ -65,7 +70,7 @@
             }).show();
                     <% } %>
     </script>
-    <script type="text/javascript" src="../js/user-signin.js"></script>
+    <script type="text/javascript" src="../<%=asset_path('js/user-signin.js')%>"></script>
 </body>
 
 </html>

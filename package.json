@@ -50,6 +50,7 @@
     "sass": "^1.77.6"
   },
   "devDependencies": {
-    "gulp": "^5.0.0"
+    "gulp": "^5.0.0",
+    "gulp-image": "^6.3.1"
   }
 }

@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
+require('./config/view-helper.js')(app);
 const port = 8000;
 const db = require('./config/mongoose.js');
 const passport = require('passport');
