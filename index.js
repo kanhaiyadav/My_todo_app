@@ -78,7 +78,6 @@ console.log(__dirname + "/uploads");
 
 app.use('/', require('./routes/index.js'));
 
-
 app.listen(port, function (err) {
     if (err) {
         console.error(err);

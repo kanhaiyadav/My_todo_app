@@ -18,7 +18,7 @@ const accessLogStream = rfs.createStream('access.log', {
 const development = {
     name: 'development',
     asset_path: '/assets',
-    session_cookie_key: "somethingrandom",
+    session_cookie_key: process.env.TODO_SESSION_COOKIE_KEY,
     db: 'tasks_db',
     smtp: {
         service: 'gmail',
@@ -26,17 +26,17 @@ const development = {
         port: 587, //indicates we are using TLS
         secure: false, //true for 465, false for other ports
         auth: {
-            user: 'kanhaiya.yadav.ds26@heritageit.edu.in',
-            pass: '3SF6uAZP'
+            user: process.env.TODO_SMTP_USER,
+            pass: process.env.TODO_SMTP_PASS
         },
         tls: {
             rejectUnauthorized: false
         }
     },
-    google_client_id: "631920121763-a18aj359mgedtf4qlgfrcb1f1c3lrem7.apps.googleusercontent.com",
-    google_client_secret: "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",
-    google_callback_url: "http://localhost:8000/user/auth/google/callback",
-    jwt_secret: "my_todo_app",
+    google_client_id: process.env.TODO_GOOGLE_CLIENT_ID,
+    google_client_secret: process.env.TODO_GOOGLE_CLIENT_SECRET,
+    google_callback_url: process.env.TODO_GOOGLE_CALLBACK_URL,
+    jwt_secret: process.env.TODO_JWT_SECRET,
     morgan: {
         mode: 'dev',
         options: {stream: accessLogStream}
