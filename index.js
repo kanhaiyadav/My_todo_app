@@ -15,6 +15,7 @@ const flash = require('connect-flash');
 const path = require('path');
 const customMware = require('./config/middleware.js');
 const env = require('./config/environment.js');
+require('dotenv').config();
 const logger = require('morgan');
 
 
@@ -24,8 +25,8 @@ app.set('views', path.join(__dirname, 'views'));
 //preventing sass middleware to run every time server start when in production mode
 if (env.name == 'development') {
     app.use(sassMiddleware({
-        src: path.join(__dirname, env.asset_path, 'scss'),
-        dest: path.join(__dirname, env.asset_path, 'css'),
+        src: path.join(__dirname, process.env.ASSET_PATH, 'scss'),
+        dest: path.join(__dirname, process.env.ASSET_PATH, 'css'),
         debug: true,
         outputStyle: 'extended',
         prefix: '/css'
@@ -38,7 +39,7 @@ app.use(session({
 
     //it is a secret key used to encrypt and decrypt the user.id stored in session
     // TODO change the secret before deployment in production mode
-    secret: env.session_cookie_key,
+    secret: process.env.SESSION_COOKIE_KEY,
 
     //True: When saveUninitialized is set to true, the session will be saved to the store even if it is new and has not been modified. This can be useful if you need to track visits to your site for statistics or similar purposes, even if the session data is empty.
     //Example: Consider a web application where users can browse content without logging in or performing any actions that modify the session. With saveUninitialized: true, a session would be created and stored for every visitor, even if they don't do anything that requires session data. This can lead to a large number of unnecessary sessions in your store.
@@ -68,7 +69,7 @@ app.use(customMware.setFlash);
 app.use(logger(env.morgan.mode, env.morgan.options));
 
 app.use(cookieParser());
-app.use(express.static('./' + env.asset_path));
+app.use(express.static('./' + process.env.ASSET_PATH));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 

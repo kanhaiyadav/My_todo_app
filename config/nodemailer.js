@@ -1,10 +1,24 @@
 const nodemailer = require('nodemailer');
 const ejs = require('ejs');
 const path = require('path');
-const env = require('./environment');
+require('dotenv').config();
+
+smtp = {
+    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587, //indicates we are using TLS
+    secure: false, //true for 465, false for other ports
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD
+    },
+    tls: {
+        rejectUnauthorized: false
+    }
+}
 
 //This part defines how the communication will take place
-let transporter = nodemailer.createTransport(env.smtp);
+let transporter = nodemailer.createTransport(smtp);
 
 //This part says where will the ejs file when a html email is sent.
 let renderTemplate = (data, relativePath) => {

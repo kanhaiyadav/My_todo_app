@@ -69,7 +69,8 @@ const production = {
     morgan: {
         mode: 'combined',
         options: { stream: accessLogStream }
-    }
+    },
+    mongo_url: 'mongodb+srv://kanishy:kans@cluster0.h1fuw4l.mongodb.net/tasks_db?retryWrites=true&w=majority&appName=Cluster0'
 
 }
 
