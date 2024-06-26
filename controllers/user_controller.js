@@ -65,16 +65,22 @@ module.exports.create = async function (req, res) {
                 req.flash('success', 'User created successfully!');
                 return res.redirect('/user/signin');
             } catch (err) {
-                console.log('error in creating user while signing up', err);
-                return;
+                // console.log('error in creating user while signing up', err);
+                return res.render('error', {
+                    message: "error in creating user while signing up",
+                    error: err
+                });
             }
         } else {
             req.flash("error", "User already exists!");
             return res.redirect('back');
         }
     } catch (err) {
-        console.log('error in finding user in signing up');
-        return;
+        // console.log('error in finding user in signing up');
+        return res.render('error', {
+            message: "error in finding user in signing up",
+            error: err
+        })
     }
 }
 
@@ -82,7 +88,6 @@ module.exports.update = async (req, res) => {
     try {
         let user = await User.findById(req.user._id);
         if (req.file) {
-            console.log(req.file);
             if (await this.isFileExists(req, res)) {
                 fs.unlinkSync(path.join(__dirname, "..", user.avatar));
             }
@@ -90,7 +95,8 @@ module.exports.update = async (req, res) => {
             await user.save();
         }
         else {
-            console.log("File does not exist");
+            // console.log("File does not exist");
+            res.status(500).json({ message: "File does not exist" });
         }
         await User.findByIdAndUpdate(req.user._id, req.body);
         res.locals.user = await User.findById(req.user._id);
@@ -102,7 +108,8 @@ module.exports.update = async (req, res) => {
             message: "updated successfully"
         });
     } catch (err) {
-        console.error(err);
+        // console.error(err);
+        return res.status(500).json({ message: "Some error has occurred!!" });
     }
 }
 
@@ -138,19 +145,25 @@ module.exports.indentify = async (req, res) => {
                 forgotUser.valid = true;
                 await forgotUser.save();
             }
-            console.log("****", forgotUser)
             let job = queue.create('emails', forgotUser).save(function (err) {
                 if (err) {
-                    console.log("error in sending to the queue", err);
-                    return;
+                    // console.log("error in sending to the queue", err);
+                    return res.render('error', {
+                        message: "error in sending to the queue",
+                        error: err
+                    });
                 }
-                console.log("job enqueued", job.id);
+                // console.log("job enqueued", job.id);
             })
 
             return res.redirect('varified/' + user._id);
         }
     } catch (err) {
-        console.log(err);
+        // console.log(err);
+        return res.render('error', {
+            message: "some error has occurred!!!",
+            error: err
+        })
     }
 }
 
@@ -164,7 +177,6 @@ module.exports.varified = async (req, res) => {
 
 module.exports.resetPassword = async (req, res) => {
     let forgotUser = await ForgotUser.findOne({ token: req.params.token });
-    console.log(req.params.token);
     if (!forgotUser) {
         req.flash("error", "Something went wrong, try again");
         res.redirect('/user/signin');

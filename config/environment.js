@@ -40,7 +40,7 @@ const development = {
     jwt_secret: process.env.TODO_JWT_SECRET,
     morgan: {
         mode: 'dev',
-        options: {stream: accessLogStream}
+        options: { stream: accessLogStream }
     }
 }
 
@@ -68,7 +68,7 @@ const production = {
     jwt_secret: process.env.TODO_JWT_SECRET,
     morgan: {
         mode: 'combined',
-        options: {stream: accessLogStream}
+        options: { stream: accessLogStream }
     }
 
 }

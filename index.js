@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 require('./config/view-helper.js')(app);
-const port = 8000;
+const port = process.env.PORT || 8000;
 const db = require('./config/mongoose.js');
 const passport = require('passport');
 const passportLocal = require('./config/passport.js');
@@ -74,7 +74,6 @@ app.use(express.urlencoded({ extended: true }))
 
 //making uploads folder static(i.e. making it available for finding static files)
 app.use("/uploads", express.static(__dirname + "/uploads"));
-console.log(__dirname + "/uploads");
 
 app.use('/', require('./routes/index.js'));
 

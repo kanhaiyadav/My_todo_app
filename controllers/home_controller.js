@@ -10,7 +10,10 @@ module.exports.home = async (req, res) => {
             user: user
         });
     } catch (err) {
-        console.error(err);
+        res.render('error', {
+            message: 'User not found',
+            error: err
+        });
     }
 }
 

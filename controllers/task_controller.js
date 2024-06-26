@@ -20,10 +20,10 @@ module.exports.create = async (req, res) => {
         // taskMailer.newTask(task);
         let job = queue.create('emails', task).save(function (err) {
             if (err) {
-                console.log("error in sending to the queue", err);
+                // console.log("error in sending to the queue", err);
                 return;
             }
-            console.log("job enqueued", job.id);
+            // console.log("job enqueued", job.id);
         })
         if (req.xhr) {
             return res.status(200).json({
@@ -60,7 +60,7 @@ module.exports.update = async (req, res) => {
         })
 
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(500).json({
             message: "Some error has occurred!!"
         })
@@ -83,7 +83,7 @@ module.exports.delete = async (req, res) => {
         }
         return res.redirect('/home');
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         if (req.xhr) {
             return res.status(500).json({
                 message: "Failed to delte the task!!"
