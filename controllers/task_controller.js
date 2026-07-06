@@ -1,6 +1,6 @@
 const Task = require('../model/task_model.js');
 const User = require('../model/users_model.js');
-const taskMailer = require("../mailers/tasks-mailer.js");
+// const taskMailer = require("../mailers/tasks-mailer.js");
 const queue = require('../config/kue');
 const taskEmailWorker = require('../workers/task_email_worker.js');
 

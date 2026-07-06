@@ -15,7 +15,7 @@ const forgot_user_schema = new mongoose.Schema({
     }
 }, {
     timestamps: true
-});
+})
 
 
 const ForgotUser = mongoose.model('ForgotUser', forgot_user_schema);
